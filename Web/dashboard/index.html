@@ -1,0 +1,710 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Weather disease</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet" />
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet" />
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+
+    <!--     ECharts -->
+    <script src='https://cdn.bootcss.com/echarts/3.5.2/echarts.min.js'></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
+
+            <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+            <div class="sidebar-wrapper">
+                <!--<div class="logo">
+                    <a href="index.html" class="simple-text">
+                    Dashboards
+                </a>
+                </div>-->
+
+                <ul class="nav">
+                    <li>
+                        <a href="../index.html">
+                        <i class="pe-7s-monitor"></i>
+                        <p>Home</p>
+                    </a>
+                    </li>
+                    <li class="active">
+                        <a href="index.html">
+                        <i class="pe-7s-graph"></i>
+                        <p>Analytics</p>
+                    </a>
+                    </li>
+                    <li>
+                        <a href="twmaps.html">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>TW Maps</p>
+                    </a>
+                    </li>
+                    <li>
+                        <a href="wmaps.html">
+                        <i class="pe-7s-world"></i>
+                        <p>World Maps</p>
+                    </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="../checkeddengue.html">
+                        <i class="pe-7s-settings"></i>
+                        <p>How to Prevention</p>
+                    </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="../dengue.html">
+                        <i class="pe-7s-note2"></i>
+                        <p>Knowledge</p>
+                    </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="../game.html">
+                        <i class="pe-7s-joy"></i>
+                        <p>Game</p>
+                    </a>
+                    </li>
+                    <li>
+                        <a href="team.html">
+                        <i class="pe-7s-user"></i>
+                        <p>About us</p>
+                    </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-panel">
+            <nav class="navbar navbar-default navbar-fixed">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                        <a class="navbar-brand" href="index.html"> Weather disease Dashboard</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <!--<i class="fa fa-dashboard"></i>-->
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="index.html">
+                                English
+                            </a>
+                            </li>
+                            <li>
+                                <a href="../zh/dashboard/index.html">
+                               繁體TW
+                            </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <br>
+                                <h3 class="title">&nbsp Case of monthly dengue fever in Taiwan</h3><br>
+                                <p>&nbsp&nbsp
+                                    The chart shows the monthly dengue case statistics for 2006 to 2016, <br>&nbsp&nbsp
+                                    and the graphs show that dengue fever cases are increasing year by year. <br>&nbsp&nbsp
+                                    This topic will find a year-on-year association of dengue fever cases.
+                                </p>
+                                <br>
+                                <div class="content">
+                                    <div id="tndg" style="height: 450%;width:80%"></div>
+                                    <script type="text/javascript">
+                                        /*自動輪播視覺化圖表開始*/
+                                        var dom = document.getElementById("tndg");
+                                        var myChart = echarts.init(dom);
+                                        var app = {};
+                                        option = null;
+                                        var dataMap = {};
+                                        function dataFormatter(obj) {
+                                            var pList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                                            return obj;
+                                        }
+
+                                        dataMap.dataPI = dataFormatter({
+                                            //max : 4000,
+                                            2006: [4, 4, 9, 3, 6, 13, 46, 81, 114, 151, 136, 81],
+                                            2007: [21, 5, 5, 10, 7, 50, 127, 121, 115, 233, 259, 137],
+                                            2008: [25, 8, 11, 13, 8, 24, 67, 96, 64, 117, 109, 34],
+                                            2009: [22, 10, 10, 18, 12, 23, 33, 66, 47, 115, 184, 139],
+                                            2010: [41, 23, 18, 10, 12, 21, 37, 120, 217, 301, 242, 134],
+                                            2011: [16, 18, 0, 4, 6, 14, 23, 91, 114, 215, 236, 168],
+                                            2012: [31, 8, 14, 21, 23, 21, 69, 110, 188, 218, 181, 81],
+                                            2013: [27, 19, 22, 14, 19, 51, 54, 63, 63, 71, 117, 98],
+                                            2014: [24, 16, 15, 18, 22, 86, 190, 304, 447, 703, 729, 461],
+                                            2015: [89, 31, 29, 24, 38, 60, 169, 743, 1336, 1276, 1223, 780],
+                                            2016: [262, 37, 16, 22, 23, 23, 41, 73, 20, 43, 27, 24]
+                                        });
+
+
+
+                                        option = {
+                                            baseOption: {
+                                                timeline: {
+                                                    // y: 0,
+                                                    axisType: 'category',
+                                                    // realtime: false,
+                                                    // loop: false,
+                                                    autoPlay: true,
+                                                    // currentIndex: 2,
+                                                    playInterval: 1000,
+                                                    // controlStyle: {
+                                                    //     position: 'left'
+                                                    // },
+                                                    data: [
+                                                        '2006-01-01', '2007-01-01', '2008-01-01', '2009-01-01', '2010-01-01', '2011-01-01', '2012-01-01', '2013-01-01',
+                                                        {
+                                                            value: '2014-01-01',
+                                                            tooltip: {
+                                                                formatter: function (params) {
+                                                                    return params.name + '登革熱爆發年份';
+                                                                }
+                                                            },
+                                                            symbol: 'diamond',
+                                                            symbolSize: 16
+                                                        },
+                                                        {
+                                                            value: '2015-01-01',
+                                                            tooltip: {
+                                                                formatter: function (params) {
+                                                                    return params.name + '登革熱最嚴重年份';
+                                                                }
+                                                            },
+                                                            symbol: 'diamond',
+                                                            symbolSize: 18
+                                                        }, '2016-01-01'
+                                                    ],
+                                                    label: {
+                                                        formatter: function (s) {
+                                                            return (new Date(s)).getFullYear();
+                                                        }
+                                                    }
+                                                },
+                                                title: {
+                                                    subtext: 'Case of monthly dengue fever'
+                                                },
+                                                tooltip: {
+                                                },
+                                                legend: {
+                                                    x: 'right',
+                                                    data: ['The numbers of cases']
+                                                },
+                                                calculable: true,
+                                                grid: {
+                                                    top: 80,
+                                                    bottom: 100,
+                                                    tooltip: {
+                                                        trigger: 'axis',
+                                                        axisPointer: {
+                                                            type: 'shadow',
+                                                            label: {
+                                                                show: true,
+                                                                formatter: function (params) {
+                                                                    return params.value.replace('\n', '');
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                xAxis: [
+                                                    {
+                                                        'type': 'category',
+                                                        'axisLabel': { 'interval': 0 },
+                                                        'data': [
+                                                            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+                                                        ],
+                                                        splitLine: { show: false }
+                                                    }
+                                                ],
+                                                yAxis: [
+                                                    {
+                                                        type: 'value',
+                                                        min: 0,
+                                                        max: 1300,
+                                                        interval: 150,
+                                                        name: 'case（each person）'
+                                                    }
+                                                ],
+                                                series: [
+                                                    { name: 'Case of monthly dengue fever', type: 'bar' }
+                                                ]
+                                            },
+                                            options: [
+                                                {
+                                                    title: { text: '2006' },
+                                                    series: [
+
+                                                        { data: dataMap.dataPI['2006'] }
+                                                    ]
+                                                },
+                                                {
+                                                    title: { text: '2007' },
+                                                    series: [
+
+                                                        { data: dataMap.dataPI['2007'] }
+                                                    ]
+                                                },
+                                                {
+                                                    title: { text: '2008' },
+                                                    series: [
+
+                                                        { data: dataMap.dataPI['2008'] }
+                                                    ]
+                                                },
+                                                {
+                                                    title: { text: '2009' },
+                                                    series: [
+
+                                                        { data: dataMap.dataPI['2009'] }
+                                                    ]
+                                                },
+                                                {
+                                                    title: { text: '2010' },
+                                                    series: [
+
+                                                        { data: dataMap.dataPI['2010'] }
+                                                    ]
+                                                },
+                                                {
+                                                    title: { text: '2011' },
+                                                    series: [
+
+                                                        { data: dataMap.dataPI['2011'] }
+                                                    ]
+                                                },
+                                                {
+                                                    title: { text: '2012' },
+                                                    series: [
+
+                                                        { data: dataMap.dataPI['2012'] }
+                                                    ]
+                                                },
+                                                {
+                                                    title: { text: '2013' },
+                                                    series: [
+
+                                                        { data: dataMap.dataPI['2013'] }
+                                                    ]
+                                                },
+                                                {
+                                                    title: { text: '2014' },
+                                                    series: [
+
+                                                        { data: dataMap.dataPI['2014'] }
+                                                    ]
+                                                },
+                                                {
+                                                    title: { text: '2015' },
+                                                    series: [
+
+                                                        { data: dataMap.dataPI['2015'] }
+                                                    ]
+                                                },
+                                                {
+                                                    title: { text: '2016' },
+                                                    series: [
+
+                                                        { data: dataMap.dataPI['2016'] }
+                                                    ]
+                                                },
+                                            ]
+                                        };;
+                                        if (option && typeof option === "object") {
+                                            myChart.setOption(option, true);
+                                        }
+                                        /*自動輪播視覺化圖表開始*/
+                                    </script>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <br>
+                                <h3 class="title">&nbspThe relationship between dengue fever and rainfall in Tainan</h3><br>
+                                <p>&nbsp&nbsp
+                                    This chart of monthly rainfall and dengue cases in 2012 to 2016 in tainan, <br>&nbsp&nbsp
+                                    And when this month have havey rain and dengue case were be increased. <br>&nbsp&nbsp
+                                    So we can get a conclusion that is wet environment will caused dengues easily.
+                                </p>
+                                <br>
+                                <div class="content">
+                                    <div id="dgrain" style="height: 450%;width:80%"></div>
+                                    <script type="text/javascript">
+                                        /*登革熱與降雨量關係圖js開始*/
+                                        var dom = document.getElementById("dgrain");
+                                        var myChart = echarts.init(dom);
+                                        var app = {};
+                                        option = null;
+
+                                        var option = {
+                                            color: ['#6997ed', '#ffac2a', '#d85f83', '#38e7e9', '#bda29a', '#008acd', '#008acd', '#c4ccd3'],
+                                            tooltip: {
+                                                trigger: 'axis',
+                                                axisPointer: {
+                                                    type: 'cross'
+                                                }
+                                            },
+                                            legend: {
+                                                data: ['Rainfall', 'Case']
+                                            },
+                                            xAxis: {
+                                                type: 'category',
+                                                data: ['2012/01', '2012/02', '2012/03', '2012/04', '2012/05', '2012/06', '2012/07', '2012/08', '2012/09', '2012/10', '2012/11', '2012/12',
+                                                    '2013/01', '2013/02', '2013/03', '2013/04', '2013/05', '2013/06', '2013/07', '2013/08', '2013/09', '2013/10', '2013/11', '2013/12',
+                                                    '2014/01', '2014/02', '2014/03', '2014/04', '2014/05', '2014/06', '2014/07', '2014/08', '2014/09', '2014/10', '2014/11', '2014/12',
+                                                    '2015/01', '2015/02', '2015/03', '2015/04', '2015/05', '2015/06', '2015/07', '2015/08', '2015/09', '2015/10', '2015/11', '2015/12',
+                                                    '2016/01', '2016/02', '2016/03', '2016/04', '2016/05', '2016/06', '2016/07', '2016/08', '2016/09', '2016/10', '2016/11', '2016/12']
+                                            },
+                                            yAxis: [{
+                                                name: 'Rainfall(mm)',
+                                                type: 'value',
+                                                axisLabel: {
+                                                    formatter: "{value}"
+                                                }
+                                            }, {
+                                                name: 'Case(人)',
+                                                type: 'value',
+                                                axisLabel: {
+                                                    formatter: "{value} people"
+                                                }
+                                            }],
+                                            dataZoom: [{
+                                                type: 'slider',
+                                                start: 40,
+                                                end: 60
+                                            }, {
+                                                handleStyle: {
+                                                    color: '#008acd',
+                                                }
+                                            }],
+                                            series: [{
+                                                name: 'Rainfall',
+                                                type: 'bar',
+                                                itemStyle: {
+                                                    normal: {
+                                                        barBorderRadius: [3, 3, 0, 0]
+                                                    }
+                                                },
+                                                data: [5.5, 40, 6.5, 141.5, 404.5, 803.5, 254.5, 635, 18.6, 2.5, 95.6, 18,
+                                                    7.5, 1.5, 5.5, 111.7, 286, 233.5, 148.9, 806.5, 60.2, 0, 6.1, 21.1,
+                                                    0, 9.5, 27.6, 12, 181.5, 134.3, 123.4, 682.1, 88, 1.5, 0.2, 8,
+                                                    13.5, 22, 5.1, 25.8, 300, 19, 225, 629.6, 192, 31, 4.5, 13.5,
+                                                    170.9, 38, 96.5, 146, 87.3, 376.5, 374, 91.5, 1220.3, 69, 48.9, 2]
+                                            }, {
+                                                name: 'Case',
+                                                type: 'line',
+                                                yAxisIndex: 1,
+                                                symbolSize: 6,
+                                                data: [4, 0, 0, 6, 9, 4, 24, 50, 99, 105, 64, 34,
+                                                    10, 4, 0, 1, 0, 0, 1, 3, 1, 1, 20, 7,
+                                                    4, 2, 0, 0, 1, 0, 5, 7, 15, 44, 67, 17,
+                                                    2, 1, 0, 1, 4, 19, 105, 408, 548, 430, 289, 68,
+                                                    7, 4, 1, 0, 1, 3, 4, 6, 1, 4, 4, 2]
+                                            }]
+                                        };
+
+                                        // 使用刚指定的配置项和数据显示图表。
+                                        myChart.setOption(option);;
+                                        if (option && typeof option === "object") {
+                                            myChart.setOption(option, true);
+                                        }
+
+                                    /*登革熱與降雨量關係圖js結束*/
+                                    </script>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <br>
+                                <h3 class="title">&nbspAverage temperature in Tainan(each year)</h3><br>
+                                <p>&nbsp&nbsp
+                                    We compare both Monthly average of temperature in 1897-1945 and 2012 to 2016 from CMB data in tainan ,<br>&nbsp&nbsp
+                                    and we can observed Monthly average of temperature in 2012 to 2016 which is most heigher than Monthly average of temperature in 1897-1945. <br>&nbsp&nbsp
+                                    So we can find that the temperture is warmer than before, <br>&nbsp&nbsp
+                                    and increased time about mosquito breeding.
+                                </p>
+                                <br>
+                                <div class="content">
+                                    <div id="tntmp" style="height: 400%;width:80%"></div>
+                                    <script type="text/javascript">
+                                        /*台南歷年月均溫js開始*/
+
+                                        var dom = document.getElementById("tntmp");
+                                        var myChart = echarts.init(dom);
+                                        var app = {};
+                                        option = null;
+                                        option = {
+                                            color: ['#F65676', '#ba91ed', '#6997ed', '#ffac2a', '#38e7e9', '#91c7ae', '#749f83', '#ca8622', '#bda29a', '#008acd', '#008acd', '#c4ccd3'],
+                                            title: {
+                                                text: 'Average °C (each year)'
+                                            },
+                                            tooltip: {
+                                                trigger: 'axis'
+                                            },
+                                            legend: {
+                                                data: ['1897-1945', '2012', '2013', '2014', '2015', '2016'],
+                                                selected: {
+                                                    '2012': false, '2013': false, '2014': false, '2015': false
+                                                }
+                                            },
+                                            toolbox: {
+                                                feature: {
+                                                    saveAsImage: {}
+                                                }
+                                            },
+                                            xAxis: {
+                                                type: 'category',
+                                                boundaryGap: false,
+                                                data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                                            },
+                                            yAxis: {
+                                                type: 'value',
+                                                min: 10,
+                                                max: 35,
+                                                interval: 5,
+                                                axisLabel: {
+                                                    formatter: "{value} °C"
+                                                }
+                                            },
+                                            series: [
+                                                {
+                                                    name: '1897-1945',
+                                                    type: 'line',
+
+                                                    data: [17, 17.1, 19.7, 23.4, 26.3, 27.4, 27.8, 27.5, 27.1, 24.8, 21.8, 18.5],
+                                                    markArea: {
+                                                        data: [[{
+                                                            name: '25-32°C',
+                                                            yAxis: '32'
+                                                        }, {
+                                                            yAxis: '25'
+                                                        }]]
+                                                    },
+                                                    markLine: {
+                                                        data: [
+                                                            [
+                                                                {
+                                                                    name: '20°C',
+                                                                    xAxis: 'Jan',
+                                                                    yAxis: '20'
+                                                                },
+                                                                {
+                                                                    xAxis: 'Dec',
+                                                                    yAxis: '20'
+                                                                }
+                                                            ]
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    name: '2012',
+                                                    type: 'line',
+
+                                                    data: [17.2, 17.6, 21.4, 26.1, 27.6, 28.1, 29.3, 28, 28.5, 25.6, 23.6, 19.5]
+                                                },
+                                                {
+                                                    name: '2013',
+                                                    type: 'line',
+
+                                                    data: [17.5, 20.4, 22.5, 23.9, 27.3, 29.5, 29.4, 28.9, 28.6, 25.7, 22.8, 18]
+                                                },
+                                                {
+                                                    name: '2014',
+                                                    type: 'line',
+
+                                                    data: [17.6, 18.4, 21.3, 25, 27.2, 29, 30.4, 29, 29.5, 26.4, 23.9, 17.9]
+                                                },
+                                                {
+                                                    name: '2015',
+                                                    type: 'line',
+
+                                                    data: [17.8, 18.9, 21.8, 24.9, 27.7, 30.4, 29.1, 28.4, 28.4, 26.8, 25.1, 20.5]
+                                                },
+                                                {
+                                                    name: '2016',
+                                                    type: 'line',
+
+                                                    data: [17.3, 17.4, 19.7, 26.3, 28.4, 29.4, 29.9, 29.3, 28, 27.8, 24.3, 20.9]
+                                                }
+                                            ]
+                                        };
+                                        ;
+                                        if (option && typeof option === "object") {
+                                            myChart.setOption(option, true);
+                                        }
+                                    /*台南歷年月均溫js結束*/
+                                    </script>
+                                    <h4>&nbsp The temperature easy to spread the dengue virus is 25 ~ 32 °C </h4>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!--<div class="col-md-12">
+                            <div class="card">
+                                <br>
+                                <h3 class="title">&nbsp全國登革熱本土病例趨勢圖</h3>
+                                <p>&nbsp&nbsp2016至2017</p>
+                                <br>
+                                <div class="content">
+                                    <div id="twdg" style="height: 450%;width:80%"></div>
+                                    <script type="text/javascript">
+                                        /*全國登革熱本土病例趨勢圖js開始*/
+
+                                        var dom = document.getElementById("twdg");
+                                        var myChart = echarts.init(dom);
+                                        var app = {};
+                                        option = null;
+                                        var option = {
+                                            color: ['#ba91ed', '#6997ed', '#ffac2a', '#38e7e9', '#91c7ae', '#749f83', '#ca8622', '#bda29a', '#008acd', '#008acd', '#c4ccd3'],
+                                            tooltip: {
+                                                trigger: 'axis',
+                                                axisPointer: {
+                                                    type: 'cross'
+                                                }
+                                            },
+                                            legend: {
+                                                data: ['排除病例数量', '確認病例数量']
+                                            },
+                                            xAxis: {
+                                                type: 'category',
+                                                data: ["2016/1", "2016/2", "2016/3", "2016/4", "2016/5", "2016/6", "2016/7", "2016/8", "2016/9", "2016/10", "2016/11", "2016/12",
+                                                    "2017/1", "2017/2", "2017/3", "2017/4", "2017/5", "2017/6", "2017/7", "2017/8", "2017/9", "2017/10", "2017/11", "2017/12"]
+                                            },
+                                            yAxis: [{
+                                                name: '病例数(人)',
+                                                type: 'value',
+                                                axisLabel: {
+                                                    formatter: "{value} 人"
+                                                }
+                                            }],
+                                            dataZoom: [{
+                                                type: 'slider',
+                                                start: 50,
+                                                end: 100
+                                            }, {
+                                                handleStyle: {
+                                                    color: '#008acd',
+                                                }
+                                            }],
+                                            series: [{
+                                                name: '排除病例数量',
+                                                type: 'line',
+                                                itemStyle: {
+                                                    normal: {
+                                                        barBorderRadius: [3, 3, 0, 0]
+                                                    }
+                                                },
+                                                data: [705, 254, 164, 296, 489, 625, 599, 673, 607, 485, 330, 215, 160, 112, 89, 105, 165, 245, 317, 328, 75, 0, 0, 0, 0, 0]
+                                            }, {
+                                                name: '確認病例数量',
+                                                type: 'line',
+                                                itemStyle: {
+                                                    normal: {
+                                                        barBorderRadius: [3, 3, 0, 0]
+                                                    }
+                                                },
+                                                data: [297, 8, 2, 1, 0, 0, 3, 1, 1, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+                                            }]
+                                        };;
+                                        if (option && typeof option === "object") {
+                                            myChart.setOption(option, true);
+                                        }
+                                    /*全國登革熱本土病例趨勢圖js結束*/
+                                    </script>
+                                </div>
+
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <!--<nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>-->
+                    <center>
+                        <p class="copyright">
+                            &copy; 2017 <a href="../index.html">Weather disease</a>, made with love in Taiwan
+                        </p>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+
+</body>
+<!--   Core JS Files   -->
+<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="assets/js/light-bootstrap-dashboard.js"></script>
+
+</html>

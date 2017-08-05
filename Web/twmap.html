@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+<script type="text/javascript" src="https://nidss.cdc.gov.tw/ch/js/jquery.min.js"></script>
+                                    <script type="text/javascript" src="https://nidss.cdc.gov.tw/ch/js/highmaps/highmaps.js"></script>
+                                    <script type="text/javascript" src="https://nidss.cdc.gov.tw/ch/js/highmaps/data.js"></script>
+                                    <script type="text/javascript" src="https://nidss.cdc.gov.tw/ch/js/highmaps/drilldown.js"></script>
+                                    <script type="text/javascript" src="https://nidss.cdc.gov.tw/ch/js/highmaps/us-all.js"></script>
+                                    <script type="text/javascript" src="https://nidss.cdc.gov.tw/ch/js/highmaps/exporting.js"></script>
+                                    <script type="text/javascript" src="https://nidss.cdc.gov.tw/ch/js/highmaps/europe.js"></script>
+
+                                                <div id="container1" style="width: 100%; height: 1200px; margin: 10px 0 50px 0;"></div>
+                                                <span id="ctl00_NIDSSContentPlace_Note">
+
+                          <ol>
+                              <h2>1.本次查詢的日期範圍為2017/01/01-2017/08/05</h2>
+                              <h2>2.資料更新時間為2017/7/30 5:32 AM，本週為2017年31週，本月為2017年7月。</h2>
+                              <h2>3.HIV感染、後天免疫缺乏症候群、淋病、梅毒、漢生病，不提供鄉鎮市區統計資料查詢。</h2>
+                              <h2>4.本查詢結果為系統自動產生，數據隨時可能因未來修正而變動。</h2>
+                          </ol>
+
+
+              	</span>
+
+                                                <span id="ctl00_NIDSSContentPlace_Table">
+
+                                    </span>
+
+                                    <script type="text/javascript">
+                                        //<![CDATA[
+                                        $(function () {
+
+                                            $.getJSON('https://nidss.cdc.gov.tw/ch/Maps/new/全國-GeoJSON.geojson', function (geojson) {
+
+                                                //標籤資料(第一層)
+                                                var jdata1 = [{ 'code': '台北市', 'value': 24 }, { 'code': '台中市', 'value': 20 }, { 'code': '台南市', 'value': 10 }, { 'code': '高雄市', 'value': 24 }, { 'code': '基隆市', 'value': 3 }, { 'code': '新竹市', 'value': 2 }, { 'code': '嘉義市', 'value': 2 }, { 'code': '新北市', 'value': 19 }, { 'code': '桃園市', 'value': 14 }, { 'code': '新竹縣', 'value': 4 }, { 'code': '宜蘭縣', 'value': 3 }, { 'code': '苗栗縣', 'value': 3 }, { 'code': '彰化縣', 'value': 6 }, { 'code': '南投縣', 'value': 5 }, { 'code': '雲林縣', 'value': 0 }, { 'code': '嘉義縣', 'value': 4 }, { 'code': '屏東縣', 'value': 4 }, { 'code': '澎湖縣', 'value': 1 }, { 'code': '花蓮縣', 'value': 1 }, { 'code': '台東縣', 'value': 0 }, { 'code': '金門縣', 'value': 0 }, { 'code': '連江縣', 'value': 0 }];
+
+                                                //標籤資料(第二層)
+                                                var jdata2;
+
+                                                //標籤資料(由圖資取得格式)
+                                                var data = Highcharts.geojson(geojson, 'map');
+
+                                                //標籤資料替換
+                                                $.each(data, function (i) {
+                                                    this.drilldown = this.properties['CITYNAME'];
+                                                    this.code = this.properties['CITYNAME'];
+
+                                                    for (j = 0; j < jdata1.length; j = j + 1) {
+                                                        if (this.code == jdata1[j].code) {
+                                                            this.value = jdata1[j].value;
+                                                        }
+                                                    }
+                                                });
+
+                                                var tableHtml = '';
+                                                if (document.getElementById('ctl00_NIDSSContentPlace_Table'))
+                                                    tableHtml = document.getElementById('ctl00_NIDSSContentPlace_Table').innerHTML;
+
+                                                $('#container1').highcharts('Map', {
+
+
+
+
+                                                    //chart
+                                                    chart: {
+
+                                                        events: {
+
+                                                            drilldown: function (e) {
+
+                                                                if (!e.seriesOptions) {
+
+                                                                    var chart = this;
+                                                                    var mapKey = e.point.drilldown;
+                                                                    var mapUrl = 'https://nidss.cdc.gov.tw/ch/Maps/new/city/' + e.point.drilldown + '-GeoJSON.geojson';
+
+                                                                    //wade
+                                                                    //document.getElementById('drill_url').value = 'http://localhost/nidss/ch/" + ajax_url + "?" + ajax_data + "&region_name=' + escape(e.point.drilldown);
+
+                                                                    //ajax
+                                                                    $.ajax({
+
+                                                                        type: 'post',
+                                                                        url: 'https://nidss.cdc.gov.tw/ch/NIDSS_DiseaseMap_Pro.aspx',
+                                                                        data: 'pty_Q=H&pty_disease=061&dc=1&dt=1&disease=061&pty_sdate=201701&pty_edate=201731&pty_period=yw&pty_y_s=2017&pty_y_e=2017&pty_m_s=01&pty_m_e=07&pty_w_s=01&pty_w_e=31&pty_sickclass=determined_cnt&pty_immigration=&pty_date_type=3&pty_level=area&pty_ddsource=&region_name=' + escape(e.point.drilldown),
+
+                                                                        //success
+                                                                        success: function (name) {
+
+                                                                            //alert(name); //wade
+
+                                                                            jdata2 = JSON.parse(name);
+                                                                            chart.showLoading('<i class="icon-spinner icon-spin icon-3x"></i>');
+
+                                                                            var fail = setTimeout(function () {
+
+                                                                                $.ajax({
+
+                                                                                    type: 'GET',
+                                                                                    url: mapUrl,
+                                                                                    success: function () { },
+                                                                                    error: function (xhr, status, error) {
+                                                                                        if (xhr.status == 404) {
+                                                                                            chart.showLoading('<i class="icon-frown"></i> Failed loading: ' + mapKey);
+                                                                                            fail = setTimeout(function () { chart.hideLoading(); }, 50000);
+                                                                                        }
+                                                                                    }
+                                                                                });
+
+
+                                                                            }, 50000);
+
+
+                                                                           
+
+
+
+                                                                            $.getJSON(mapUrl, function (geojson) {
+
+                                                                                var data = Highcharts.geojson(geojson, 'map');
+                                                                                $.each(data, function (i) {
+                                                                                    this.code = this.properties['TOWNNAME'];
+                                                                                    for (j = 0; j < jdata2.length; j = j + 1) {
+                                                                                        if (this.code == jdata2[j].code) {
+                                                                                            this.value = jdata2[j].value;
+                                                                                        }
+                                                                                    }
+                                                                                });
+
+                                                                                chart.hideLoading();
+                                                                                clearTimeout(fail);
+
+
+                                                                                //設定第二層地圖
+                                                                                chart.addSeriesAsDrilldown(e.point, {
+                                                                                    name: e.point.code,
+                                                                                    data: data,
+                                                                                    states: { hover: { color: '#BADA55' } },
+                                                                                    dataLabels: { enabled: true, format: '{point.code}', backgroundColor: 'rgba(0,0,0,0.1)', borderRadius: 5, padding: 2, color: 'white', fontWeight: 'normal' },
+                                                                                    tooltip: { pointFormat: '{point.code}:{point.value} 人' }
+                                                                                });
+
+
+                                                                            })
+                                                                        },
+                                                                        error: function () { alert('error'); }
+                                                                    })
+                                                                }
+                                                                this.setTitle(null, { text: e.point.name });
+                                                            },
+                                                            drillup: function (e) {
+                                                                this.setTitle(null, { text: '' });
+
+                                                                if (document.getElementById('ctl00_NIDSSContentPlace_Table'))
+                                                                    document.getElementById('ctl00_NIDSSContentPlace_Table').innerHTML = tableHtml;
+
+                                                            }
+                                                        }
+                                                    },
+
+
+
+                                                    //title
+                                                    title: { text: '全國登革熱本土病例及境外移入病例地理分佈(2017年01週-2017年31週)', style: { font: 'bold 28px Trebuchet MS, Verdana, sans-serif, 微軟正黑體' } },
+
+                                                    //subtitle
+                                                    subtitle: { text: '', floating: true, align: 'right', y: 50, style: { font: 'bold 16px Trebuchet MS, Verdana, sans-serif, 微軟正黑體' } },
+
+                                                    //credits
+                                                    credits: { enabled: false },
+
+                                                    //tooltip
+                                                    tooltip: {
+                                                        backgroundColor: { linearGradient: [0, 0, 0, 60], stops: [[0, '#FFFFFF'], [1, '#E0E0E0']] },
+                                                        borderWidth: 1,
+                                                        boarderColor: '#AAA',
+                                                        borderRadius: 2
+                                                    },
+
+                                                    //legend
+                                                    legend: {
+                                                        layout: 'vertical',
+                                                        align: 'right',
+                                                        floating: true,
+                                                        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || 'rgba(255, 255, 255, 0.85)',
+                                                        symbolRadius: 0,
+                                                        symbolHeight: 14,
+                                                        valueDecimals: 0, //小數點下2位
+                                                        valueSuffix: '' //單位
+                                                    },
+
+                                                    //colors
+                                                    colors: ['#006600', '#99CC00', '#FFFF76', '#FF9900', '#CC3333'],
+
+                                                    //colorAxis
+                                                    colorAxis: {
+                                                        dataClassColor: 'category',
+                                                        dataClasses: [{ from: 0, to: 0 }, { from: 1, to: 5 }, { from: 6, to: 50 }, { from: 51, to: 500 }, { from: 501 }]
+                                                    },
+
+                                                    //mapNavigation
+                                                    mapNavigation: {
+                                                        enabled: true,
+                                                        buttonOptions: { verticalAlign: 'bottom' }
+                                                    },
+
+                                                    //plotOptions
+                                                    plotOptions: {
+                                                        map: { states: { hover: { color: '#EEDD66' } } }
+                                                    },
+
+                                                    //series
+                                                    series: [
+                                                        {
+                                                            data: data,
+                                                            name: '全台灣',
+                                                            states: { hover: { color: '#BADA55' } },
+                                                            dataLabels: { enabled: true, format: '{point.code}', backgroundColor: 'rgba(0,0,0,0.1)', borderRadius: 5, padding: 2, color: 'white', fontWeight: 'normal' },
+                                                            tooltip: { pointFormat: '{point.code}:{point.value} 人' }
+                                                        }
+                                                    ],
+
+                                                    //drilldown
+                                                    drilldown: {
+                                                        activeDataLabelStyle: { color: 'white', textDecoration: 'none' },
+                                                        drillUpButton: { relativeTo: 'spacingBox', position: { x: 0, y: 60 } }
+                                                    }
+
+                                                });
+
+
+                                            });
+                                        });
+                                        Sys.Application.initialize();
+//]]>
+                                    </script>
+
+</body>
+</html>
