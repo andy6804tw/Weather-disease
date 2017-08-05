@@ -1,7 +1,7 @@
 # Dengue helper
-
+<a href="https://andy6804tw.github.io/Weather-disease/Web/index.html">WebSite</a>
 ### App Screenshot 
-<img src="Screenshot/demo.gif" width="300">
+<img src="App/Screenshot/demo.gif" width="300">
 
 功能介紹:</br>
 1. 全球即時天氣 : 掌握目前天氣狀況、大氣天文、溫濕度以及氣象預報。</br>
@@ -33,7 +33,7 @@ WHO世界衛生組織-全球最新疾病爆發消息=>
 <a href="https://data.cdc.gov.tw/dataset/aagstable-dengue">衛生福利部疾病管制署資料開放平臺</a><br>
 
 
-<img src="Screenshot/QRCode.png" width="200">
+<img src="App/Screenshot/QRCode.png" width="200">
 <a href="https://icons8.com/icon/12128/Facepalm">Facepalm icon credits</a>
 <a href="http://www.freepik.com/free-vector/happy-kids-illustration_828943.htm">Designed by Freepik</a>
 
