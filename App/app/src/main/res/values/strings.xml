@@ -1,0 +1,116 @@
+<resources>
+    <string name="app_name">Dengue helper</string>
+    <string name="pressure">Pressure</string>
+    <string name="windSpeed">WindSpeed</string>
+    <string name="copyright">Copyright © 2017 Weather disease. All rights reserved. </string>
+    <string name="felt">felt</string>
+    <string name="humidity">humidity</string>
+    <string name="visiblity">visiblity</string>
+    <string name="dengue_fever">Dengue fever</string>
+    <string name="taiwan">Taiwan</string>
+    <string name="global">Global</string>
+    <string name="weather">Weather</string>
+    <string name="global_map">Global Map</string>
+    <string name="tw_dendue_map">Taiwan Dengue map</string>
+    <string name="item_global_temp">Global temperature map</string>
+    <string name="item_global_wet">Global humidity map</string>
+    <string name="item_global_dengue">Global dengue map</string>
+    <string name="dengun_prevention">Dengun fever prevention</string>
+
+    <string name="code00">tornado</string>
+    <string name="code01">tropical storm</string>
+    <string name="code02">hurricane</string>
+    <string name="code03">severe thunderstorms</string>
+    <string name="code04">thunderstorms</string>
+    <string name="code05">mixed rain and snow</string>
+    <string name="code06">mixed rain and sleet</string>
+    <string name="code07">mixed snow and sleet</string>
+    <string name="code08">freezing drizzle</string>
+    <string name="code09">drizzle</string>
+    <string name="code10">freezing rain</string>
+    <string name="code11">showers</string>
+    <string name="code12">showers</string>
+    <string name="code13">snow flurries</string>
+    <string name="code14">light snow showers</string>
+    <string name="code15">blowing snow</string>
+    <string name="code16">snow</string>
+    <string name="code17">hail</string>
+    <string name="code18">sleet</string>
+    <string name="code19">dust</string>
+    <string name="code20">foggy</string>
+    <string name="code21">haze</string>
+    <string name="code22">smoky</string>
+    <string name="code23">blustery</string>
+    <string name="code24">windy</string>
+    <string name="code25">cold</string>
+    <string name="code26">cloudy</string>
+    <string name="code27">mostly cloudy (night)</string>
+    <string name="code28">mostly cloudy (day)</string>
+    <string name="code29">partly cloudy (night)</string>
+    <string name="code30">partly cloudy (day)</string>
+    <string name="code31">clear (night)</string>
+    <string name="code32">sunny</string>
+    <string name="code33">fair (night)</string>
+    <string name="code34">fair (day)</string>
+    <string name="code35">mixed rain and hail</string>
+    <string name="code36">hot</string>
+    <string name="code37">isolated thunderstorms</string>
+    <string name="code38">scattered thunderstorms</string>
+    <string name="code39">scattered thunderstorms</string>
+    <string name="code40">scattered showers</string>
+    <string name="code41">heavy snow</string>
+    <string name="code42">scattered snow showers</string>
+    <string name="code43">heavy snow</string>
+    <string name="code44">partly cloudy</string>
+    <string name="code45">thundershowers</string>
+    <string name="code46">snow showers</string>
+    <string name="code47">isolated thundershowers</string>
+    <string name="code3200">not available</string>
+
+    <string name="N">N</string>
+    <string name="NNE">NNE</string>
+    <string name="NE">NE</string>
+    <string name="ENE">ENE</string>
+    <string name="E">E</string>
+    <string name="ESE">ESE</string>
+    <string name="SE">SE</string>
+    <string name="SSE">SSE</string>
+    <string name="S">S</string>
+    <string name="SSW">SSW</string>
+    <string name="SW">SW</string>
+    <string name="WSW">WSW</string>
+    <string name="W">W</string>
+    <string name="WNW">WNW</string>
+    <string name="NW">NW</string>
+    <string name="NNW">NNW</string>
+
+
+    <string name="speed0">Calm</string>
+    <string name="speed1">Light air</string>
+    <string name="speed2">Light breeze</string>
+    <string name="speed3">Gentle breeze</string>
+    <string name="speed4">Moderate breeze</string>
+    <string name="speed5">Fresh breeze</string>
+    <string name="speed6">Strong breeze</string>
+    <string name="speed7">Near gale</string>
+    <string name="speed8">Gale</string>
+    <string name="speed9">Strong gale</string>
+    <string name="speed10">Storm</string>
+    <string name="speed11">Violent storm</string>
+    <string name="speed12">Hurricane</string>
+
+
+    <string name="Today">Today</string>
+    <string name="Tomorrow">Tomorrow</string>
+    <string name="Sun">Sun</string>
+    <string name="Mon">Mon</string>
+    <string name="Tue">Tue</string>
+    <string name="Wed">Wed</string>
+    <string name="Thu">Thu</string>
+    <string name="Fri">Fri</string>
+    <string name="Sat">Sat</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

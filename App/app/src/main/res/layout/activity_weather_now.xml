@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.andy6804tw.dengueweather.WeatherNowActivity"
+    android:background="@mipmap/bg_now">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/title_shape">
+
+            <LinearLayout
+                android:id="@+id/titleLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:id="@+id/ivNow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="3dp"
+                        android:paddingTop="4dp"
+                        app:srcCompat="@mipmap/now" />
+
+                    <TextView
+                        android:id="@+id/tvCity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="台北市"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp" />
+
+                </TableRow>
+
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="14:28 CST"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </android.support.v7.widget.Toolbar>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="10dp"
+            android:layout_alignTop="@+id/ivRePlace"
+            app:srcCompat="@mipmap/menu" />
+
+        <ImageView
+            android:id="@+id/ivRePlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="13dp"
+            android:onClick="rePlace"
+            android:layout_marginRight="10dp"
+            app:srcCompat="@mipmap/replace" />
+    </RelativeLayout>
+    <!--WeatherIcon-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/layout_weather"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginStart="37dp"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_alignLeft="@+id/recycler_view"
+        android:layout_alignStart="@+id/recycler_view">
+
+        <com.github.pwittchen.weathericonview.WeatherIconView
+            android:id="@+id/weatherIconView"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignLeft="@+id/recycler_view"
+            android:layout_alignStart="@+id/recycler_view"
+            android:layout_below="@+id/relativeLayout"
+            custom:weatherIconColor="@android:color/white"
+            custom:weatherIconResource="@string/wi_day_sunny_overcast"
+            custom:weatherIconSize="25"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvCondition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="晴時多雲"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tvTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:text="28°"
+        android:textSize="80sp"
+        android:textColor="#c8ffffff"
+        android:layout_alignTop="@+id/layout_weather"
+        android:layout_alignRight="@+id/recycler_view"
+        android:layout_alignEnd="@+id/recycler_view" />
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTemperature"
+        android:layout_alignRight="@+id/tvTemperature"
+        android:layout_alignEnd="@+id/tvTemperature">
+
+        <ImageView
+            android:id="@+id/ivLow"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignBottom="@+id/tvHigh"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@+id/tvHigh"
+            android:layout_toRightOf="@+id/tvHigh"
+            android:layout_weight="1"
+            app:srcCompat="@mipmap/low" />
+
+        <TextView
+            android:id="@+id/tvLow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ivLow"
+            android:layout_marginLeft="3dp"
+            android:layout_marginStart="3dp"
+            android:layout_toEndOf="@+id/ivLow"
+            android:layout_toRightOf="@+id/ivLow"
+            android:text="18°"
+            android:textColor="@android:color/background_light"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/ivHigh"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignLeft="@+id/tvTemp"
+            android:layout_alignStart="@+id/tvTemp"
+            android:layout_alignTop="@+id/tvTemp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="6dp"
+            android:layout_weight="1"
+            app:srcCompat="@mipmap/high" />
+
+        <TextView
+            android:id="@+id/tvHigh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ivHigh"
+            android:layout_marginLeft="3dp"
+            android:layout_marginStart="3dp"
+            android:layout_toEndOf="@+id/ivHigh"
+            android:layout_toRightOf="@+id/ivHigh"
+            android:text="30°"
+            android:textColor="@android:color/background_light"
+            android:textSize="20sp" />
+
+    </TableRow>
+    <!--濕度、體感溫度、能見度-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tableRow4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:background="#63000000">
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13dp">
+
+            <TextView
+                android:id="@+id/pressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/felt"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/humidity"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/visiblity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center_horizontal"
+                android:text="@string/visiblity"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tableRow1"
+            android:layout_marginTop="14dp">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/imageView2"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/pressure" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/humidity" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/visibility" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tableRow2"
+            android:layout_marginTop="12dp"
+            android:paddingBottom="24dp"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/tvPressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.45"
+                android:gravity="center_horizontal"
+                android:text="1020 millibars"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tvHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.37"
+                android:gravity="center_horizontal"
+                android:text="48 %"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tvVisiblity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="16.1 km"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+        </TableRow>
+
+    </RelativeLayout>
+    <!--WeatherView-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/recycler_view"
+        android:layout_centerHorizontal="true"
+        android:background="#63000000"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/linearLayout">
+        <com.andy6804tw.weatherviewlibrary.WeatherView
+            android:id="@+id/weatherView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:windrelation="true"
+            app:viewcolor="@android:color/white"/>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:background="#63000000"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

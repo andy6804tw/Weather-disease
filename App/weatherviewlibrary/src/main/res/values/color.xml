@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="WeatherAstroViewColor">#FFFFFFFF</color>
+    <color name="WeatherAstroSunpathColor">#55FFFFFF</color>
+</resources>

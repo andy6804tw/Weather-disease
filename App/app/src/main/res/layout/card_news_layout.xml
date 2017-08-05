@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    android:clickable="true"
+    android:foreground="?selectableItemBackground"
+    card_view:cardBackgroundColor="#FFFFFFFF"
+    card_view:cardElevation="1dp"
+    card_view:contentPadding="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="16dp">
+
+        <ImageView
+            android:id="@+id/ivImage"
+            android:layout_width="115dp"
+            android:layout_height="80dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/ivImage"
+            android:text="海洋竹南離岸風機環差過關 擬採6.0MW大風機"
+            android:textColor="#000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/item_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTitle"
+            android:layout_toRightOf="@+id/ivImage"
+            android:text="環署3日下午通過「海洋竹南離岸式風..."
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/itemTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_detail"
+            android:layout_marginTop="7dp"
+            android:layout_toRightOf="@+id/ivImage"
+            android:text="2017-07-03 18:27"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DengueWeather.iml" filepath="$PROJECT_DIR$/DengueWeather.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spanmenulibrary/spanmenulibrary.iml" filepath="$PROJECT_DIR$/spanmenulibrary/spanmenulibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spinmenulibrary/spinmenulibrary.iml" filepath="$PROJECT_DIR$/spinmenulibrary/spinmenulibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weatherviewlibrary/weatherviewlibrary.iml" filepath="$PROJECT_DIR$/weatherviewlibrary/weatherviewlibrary.iml" />
+    </modules>
+  </component>
+</project>

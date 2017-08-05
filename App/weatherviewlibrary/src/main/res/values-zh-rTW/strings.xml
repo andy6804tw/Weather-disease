@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WeatherView Library</string>
+    <string name="pressure">氣壓</string>
+    <string name="windSpeed">風速</string>
+    <string name="sunrise">日出</string>
+    <string name="sunset">日落</string>
+</resources>
