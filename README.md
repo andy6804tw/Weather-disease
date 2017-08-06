@@ -1,5 +1,8 @@
 # Dengue helper
-# <a href="http://4xtw.tk/index.html">Weather Disease WebSite</a>
+
+# <a href="http://4xtw.tk/index.html">WebSite</a>
+# App
+<img src="App/Screenshot/QRCode.png" width="200">
 
 ### App Screenshot 
 <img src="App/Screenshot/demo.gif" width="300">
@@ -32,11 +35,6 @@ WHO世界衛生組織-全球最新疾病爆發消息=>
 
 ●Disease OpenData</br>
 <a href="https://data.cdc.gov.tw/dataset/aagstable-dengue">衛生福利部疾病管制署資料開放平臺</a><br>
-
-
-<img src="App/Screenshot/QRCode.png" width="200">
-<a href="https://icons8.com/icon/12128/Facepalm">Facepalm icon credits</a>
-<a href="http://www.freepik.com/free-vector/happy-kids-illustration_828943.htm">Designed by Freepik</a>
 
 ---- 
 
@@ -182,6 +180,9 @@ and also a high temptrue and humidity area
 * [從大數據看登革熱事件！](http://group.dailyview.tw/2015/10/21/%E5%BE%9E%E5%A4%A7%E6%95%B8%E6%93%9A%E7%9C%8B%E7%99%BB%E9%9D%A9%E7%86%B1%E4%BA%8B%E4%BB%B6/)
 * [義守大學新聞文檔](http://www.isu.edu.tw/upload/04/7/news/postfile_46241.pdf)
 * [衛生福利部疾病管制署](http://www.cdc.gov.tw/diseaseinfo.aspx?treeid=8d54c504e820735b&nowtreeid=dec84a2f0c6fac5b&tid=77BFF3D4F9CB7982)
+* [Facepalm icon credits](https://icons8.com/icon/12128/Facepalm)
+* [Designed by Freepik](http://www.freepik.com/free-vector/happy-kids-illustration_828943.htm)
+
 
 ----
 
@@ -216,5 +217,6 @@ source：[地區年齡性別統計表-登革熱](http://data.gov.tw/node/6879)
 * [從大數據看登革熱事件！](http://group.dailyview.tw/2015/10/21/%E5%BE%9E%E5%A4%A7%E6%95%B8%E6%93%9A%E7%9C%8B%E7%99%BB%E9%9D%A9%E7%86%B1%E4%BA%8B%E4%BB%B6/)
 * [義守大學新聞文檔](http://www.isu.edu.tw/upload/04/7/news/postfile_46241.pdf)
 * [衛生福利部疾病管制署](http://www.cdc.gov.tw/diseaseinfo.aspx?treeid=8d54c504e820735b&nowtreeid=dec84a2f0c6fac5b&tid=77BFF3D4F9CB7982)
-
+* [Facepalm icon credits](https://icons8.com/icon/12128/Facepalm)
+* [Designed by Freepik](http://www.freepik.com/free-vector/happy-kids-illustration_828943.htm)
 
