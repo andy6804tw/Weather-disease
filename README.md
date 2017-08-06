@@ -1,5 +1,5 @@
 # Dengue helper
-# <a href="https://andy6804tw.github.io/Weather-disease/Web/index.html">WebSite</a>
+# <a href="http://4xtw.tk/index.html">Weather Disease WebSite</a>
 
 ### App Screenshot 
 <img src="App/Screenshot/demo.gif" width="300">
