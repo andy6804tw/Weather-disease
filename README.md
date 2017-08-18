@@ -1,7 +1,6 @@
-# Dengue helper
 
 # <a href="http://4xtw.tk/index.html">WebSite</a>
-# App
+# App(Dengue helper)
 
 
 ### App Screenshot 
@@ -11,7 +10,7 @@ Introduce:</br>
 1. Global real-time weather : Temperature、Wind speed and direction、Atmospheric and Air pressure、Astronomy、Weather forecast.</br>
 2. Real-time disease news : including Taiwan dengue fever news and World Health Organization(WHO) disease news,and you can check world disease disaster news before you travel abroad.</br>
 3. Global map : Global temperature map、Global dengue map、Global humidity map.</br>
-4. Taiwan dengue map : The number of Taiwan dengue fever ,and region occur in anywhere.
+4. Taiwan dengue map : The number of Taiwan dengue fever ,and region occur in anywhere.</br>
 5. Dengun fever prevention : Dengue knowledge and simple check whether you live in danger.
 
 ---- 
@@ -54,11 +53,6 @@ we can compare both global dengue map and global climate map
 and we can find which area were dengue spread more seriously 
 and also a high temptrue and humidity area
 
-
-
-
-----
-
 ## Visualize Data
 data for visaulize chart
 
@@ -66,34 +60,37 @@ data for visaulize chart
 * ### temperature variety in 1897 and 2012-2016
 * ### monthly dengues case in tainan 2012-2016  for visaulize
 
+----
 
-## Dataset:
-●News OpenData
-
-WHO世界衛生組織-全球最新疾病爆發消息=>
-<a href="http://www.who.int/feeds/entity/csr/don/en/rss.xml">(英文版)</a>
-<a href="http://www.who.int/feeds/entity/csr/don/zh/rss.xml">(中文版)</a><br>
-<a href="http://www.cdc.gov.tw/professional/list.aspx?did=641&treeid=6FD88FC9BF76E125&nowtreeid=283F5B5821AF305B">台灣衛生福利部疾病管制署登革熱即時新聞</a><br>
-
-●Weather OpenData</br>
-<a href="https://developer.yahoo.com/weather/">Yahoo Weather API</a><br>
-<a href="http://opendata.cwb.gov.tw/index;jsessionid=3BB0B0B9FF230AE3F25A515C218C140A">交通部中央氣象局-開放資料平臺</a><br>
-
-●Disease OpenData</br>
-<a href="https://data.cdc.gov.tw/dataset/aagstable-dengue">衛生福利部疾病管制署資料開放平臺</a><br>
-
-●taiwan climate</br>
-* ### Monthly average temperature in 1897-1945 in taiwan
+# Data set:
+## Taiwan's OpenData
+### ▶ climate</br>
+* #### Central Weather Bureau - open platform
+source：[交通部中央氣象局-開放資料平臺](http://opendata.cwb.gov.tw/index;jsessionid=3BB0B0B9FF230AE3F25A515C218C140A)
+* #### Monthly average temperature in 1897-1945 in taiwan
 source：[歷年分月平均氣溫](http://twstudy.iis.sinica.edu.tw/twstatistic50/Climate.htm)
-* ### Observation data from Observatory in Taiwan in 2008-2016
+* #### Observation data from Observatory in Taiwan in 2008-2016
 source：[一年觀測資料-局屬地面測站觀測資料](http://opendata.cwb.gov.tw/catalog?group=c&dataid=B0024-002)
-
-●taiwan disease</br>
-* ### dengue cases in taiwan in 2003-2016
+### ▶ disease</br>
+* #### Taiwan CDC Open Data Portal
+source：[衛生福利部疾病管制署資料開放平臺](https://data.cdc.gov.tw/dataset/aagstable-dengue)
+* #### dengue cases in taiwan in 2003-2016
 source：[地區年齡性別統計表-登革熱](http://data.gov.tw/node/6879)
+### ▶ dengue fever news</br>
+* #### Taiwan CDC dengue fever news
+source：[台灣衛生福利部疾病管制署登革熱即時新聞](http://www.cdc.gov.tw/professional/list.aspx?did=641&treeid=6FD88FC9BF76E125&nowtreeid=283F5B5821AF305B)
+
+## Global OpenData
+### ▶ disease news</br>
+* #### WHO World Health Organization - the latest global outbreak of the news
+source：[Chinese](http://www.who.int/feeds/entity/csr/don/en/rss.xml)
+source：[English](http://www.who.int/feeds/entity/csr/don/zh/rss.xml)
+### ▶ climate</br>
+* #### Yahoo Weather(real-time data)
+source：[API](https://developer.yahoo.com/weather/)
 
 
-●Other data quotes from external</br>
+▶ Other data quotes from external</br>
 * ### data:[DengueMap](http://www.healthmap.org/dengue/en/)
 * ### data:[earth :: a global map of wind, weather, and ocean conditions](https://earth.nullschool.net/zh-cn/#current/wind/surface/level/overlay=temp/grid=on/winkel3=49.54,-3.99,298)
 
