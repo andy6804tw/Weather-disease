@@ -86,11 +86,13 @@ source：[台灣衛生福利部疾病管制署登革熱即時新聞](http://www.
 ## Global OpenData
 ### ▶ disease news</br>
 * #### WHO World Health Organization - the latest global outbreak of the news
-source：[Chinese](http://www.who.int/feeds/entity/csr/don/en/rss.xml)
+source：[Chinese](http://www.who.int/feeds/entity/csr/don/en/rss.xml)</br>
 source：[English](http://www.who.int/feeds/entity/csr/don/zh/rss.xml)
+* #### Centers for disease control and prevention(CDC)
+source：[Travel Health Notices](https://wwwnc.cdc.gov/travel/notices)
 ### ▶ climate</br>
 * #### Yahoo Weather(real-time data)
-source：[API](https://developer.yahoo.com/weather/)
+source：[Yahoo Weather API](https://developer.yahoo.com/weather/)
 
 
 ▶ Other data quotes from external</br>
