@@ -82,6 +82,8 @@ source：[地區年齡性別統計表-登革熱](http://data.gov.tw/node/6879)
 ### ▶ dengue fever news</br>
 * #### Taiwan CDC dengue fever news
 source：[台灣衛生福利部疾病管制署登革熱即時新聞](http://www.cdc.gov.tw/professional/list.aspx?did=641&treeid=6FD88FC9BF76E125&nowtreeid=283F5B5821AF305B)
+* #### international travel diease leacel table
+source：[國際間旅遊疫情建議等級表](http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=aa2d4b06c27690e6&nowtreeid=4dd5edd98f8580aa)
 
 ## Global OpenData
 ### ▶ disease news</br>
