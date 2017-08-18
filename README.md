@@ -13,7 +13,7 @@ Including Taiwan dengue fever news and World Health Organization(WHO) disease ne
 Global temperature map、Global dengue map、Global humidity map.</br>
 * ####  Taiwan dengue map : 
 The number of Taiwan dengue fever ,and region occur in anywhere.</br>
-* #### Dengun fever prevention : 
+* #### Dengue fever prevention : 
 Dengue knowledge and simple check whether you live in danger.
 
 ---- 
