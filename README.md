@@ -3,6 +3,7 @@
 # App(Dengue helper)
 <img src="App/Screenshot/demo.gif" width="300">
 <img src="App/Screenshot/QRCode.png" width="200">
+In our application we use open data provited by the government and you can use it from anywhere.
 
 ## Introduce:</br>
 * ####  Global real-time weather : 
@@ -103,6 +104,7 @@ source：[Yahoo Weather API](https://developer.yahoo.com/weather/)
 
 
 ## Reference data
+* [Dengue and Climate (CDC)](https://www.cdc.gov/dengue/entomologyecology/climate.html)
 * [從大數據看登革熱事件！](http://group.dailyview.tw/2015/10/21/%E5%BE%9E%E5%A4%A7%E6%95%B8%E6%93%9A%E7%9C%8B%E7%99%BB%E9%9D%A9%E7%86%B1%E4%BA%8B%E4%BB%B6/)
 * [義守大學新聞文檔](http://www.isu.edu.tw/upload/04/7/news/postfile_46241.pdf)
 * [衛生福利部疾病管制署](http://www.cdc.gov.tw/diseaseinfo.aspx?treeid=8d54c504e820735b&nowtreeid=dec84a2f0c6fac5b&tid=77BFF3D4F9CB7982)
