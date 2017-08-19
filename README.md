@@ -5,7 +5,7 @@
 >* Weather Disease
 >
 >Project<br>
->* Dengue Fever Alarm
+>* Dengue helper
 >
 >Member<br>
 >* Luo Ye Chen, Tsai Yi Lin, Wang Shih Cheng
