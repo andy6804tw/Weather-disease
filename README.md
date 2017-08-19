@@ -11,7 +11,7 @@
 >* Luo Ye Chen, Tsai Yi Lin, Wang Shih Cheng
 
 # Introduce
->Subject：How is  relationship between climate factors and infectious diseases?
+>Subject：How is  relationship between climatic factors and infectious diseases?
 >
 >Problem & Solution : 
 We mainly collect weather and infectious diseases from Taiwan and other neighboring countries. 
