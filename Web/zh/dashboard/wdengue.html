@@ -1,0 +1,2467 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Weather disease</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet" />
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet" />
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+
+    <!--     ECharts -->
+    <script src='https://cdn.bootcss.com/echarts/3.5.2/echarts.min.js'></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+    <style>
+        .lampRed {
+
+            width: 20px;
+            height: 20px;
+            border: 1px solid #F65676;
+            border-radius: 50%;
+            font-size: 20px;
+            background: -webkit-gradient(linear, left top, left bottom, from(#F65676), to(#f2859d));
+            animation: breath1 2s ease-in-out infinite alternate;
+            cursor: pointer;
+        }
+
+        @keyframes breath1 {
+            0% {
+                opacity: .2;
+                box-shadow: 0 0 2px rgba(246, 86, 118, 1);
+            }
+            100% {
+                opacity: 1;
+                border: 1px solid rgba(246, 86, 118, 1);
+                box-shadow: 0 0 40px rgba(246, 86, 118, 1);
+            }
+        }
+
+        .lampYellow {
+
+            width: 20px;
+            height: 20px;
+            border: 1px solid #F7AD0A;
+            border-radius: 50%;
+            font-size: 20px;
+            background: -webkit-gradient(linear, left top, left bottom, from(#F7AD0A), to(#F6D600));
+            animation: breath2 2s ease-in-out infinite alternate;
+            cursor: pointer;
+        }
+
+        @keyframes breath2 {
+            0% {
+                opacity: .2;
+                box-shadow: 0 0 2px rgba(246, 214, 0, 1);
+            }
+            100% {
+                opacity: 1;
+                border: 1px solid rgba(246, 214, 0, 1);
+                box-shadow: 0 0 40px rgba(246, 214, 0, 1);
+            }
+        }
+
+        .lampGreen {
+
+            width: 20px;
+            height: 20px;
+            border: 1px solid #11CD86;
+            border-radius: 50%;
+            font-size: 20px;
+            background: -webkit-gradient(linear, left top, left bottom, from(#11CD86), to(#00ffcc));
+            animation: breath3 2s ease-in-out infinite alternate;
+            cursor: pointer;
+        }
+
+        @keyframes breath3 {
+            0% {
+                opacity: .2;
+                box-shadow: 0 0 2px rgba(17, 205, 134, 1);
+            }
+            100% {
+                opacity: 1;
+                border: 1px solid rgba(17, 205, 134, 1);
+                box-shadow: 0 0 40px rgba(17, 205, 134, 1);
+            }
+        }
+    </style>
+    <div class="wrapper">
+        <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
+
+            <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="index.html" class="simple-text">
+                    儀表板
+                </a>
+                </div>
+
+                <ul class="nav">
+                    <li>
+                        <a href="../index.html">
+                        <i class="pe-7s-monitor"></i>
+                        <p>首頁</p>
+                    </a>
+                    </li>
+                    <li>
+                        <a href="index.html">
+                        <i class="pe-7s-graph"></i>
+                        <p>台灣登革熱分析</p>
+                    </a>
+                    </li>
+                    <li>
+                        <a href="twmaps.html">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>台灣地區登革熱分析</p>
+                    </a>
+                    </li>
+                    <li class="active">
+                        <a href="wdengue.html">
+                        <i class="pe-7s-world"></i>
+                        <p>登革熱警報</p>
+                    </a>
+                    </li>
+                    <li>
+                        <a href="wmaps.html">
+                        <i class="pe-7s-global"></i>
+                        <p>全球地理分佈</p>
+                    </a>
+                    </li>
+                    <li>
+                        <a href="news.html">
+                            <i class="pe-7s-news-paper"></i>
+                            <p>歷史新聞</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="../checkeddengue.html">
+                        <i class="pe-7s-settings"></i>
+                        <p>登革熱防治步驟</p>
+                    </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="../dengue.html">
+                        <i class="pe-7s-note2"></i>
+                        <p>登革熱知識區</p>
+                    </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="../game.html">
+                        <i class="pe-7s-joy"></i>
+                        <p>登革熱小遊戲</p>
+                    </a>
+                    </li>
+                    <li>
+                        <a href="team.html">
+                        <i class="pe-7s-user"></i>
+                        <p>關於團隊</p>
+                    </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-panel">
+            <nav class="navbar navbar-default navbar-fixed">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                        <a class="navbar-brand" href="../">登革熱</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <!--<i class="fa fa-dashboard"></i>-->
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="wdengue.html">
+                               繁體
+                            </a>
+                            </li>
+                            <li>
+                                <a href="../../dashboard/wdengue.html">
+                                English
+                            </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="content">
+                <div class="col-md-12">
+                    <table>
+                        <tr>
+                            <td colspan="3">
+                                <h3>近期登革熱爆發國家：
+                                    <h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><br></td>
+                            <td><br></td>
+                            <td><br></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="lampRed"></div>
+                            </td>
+                            <td>&nbsp;&nbsp;&nbsp;
+                                <font color="#F65676">三級警戒</font>
+                            </td>
+                            <td>&nbsp;：&nbsp;斯里蘭卡</td>
+                        </tr>
+                        <tr>
+                            <td><br><br></td>
+                            <td><br><br></td>
+                            <td><br><br></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="lampYellow"></div>
+                            </td>
+                            <td>&nbsp;&nbsp;&nbsp;
+                                <font color="#F7AD0A">二級警戒</font>
+                            </td>
+                            <td>&nbsp;：&nbsp;馬來西亞、菲律賓 、緬甸 、越南、泰國、寮國及柬埔寨</td>
+                        </tr>
+                        <tr>
+                            <td><br><br></td>
+                            <td><br><br></td>
+                            <td><br><br></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="lampGreen"></div>
+                            </td>
+                            <td>&nbsp;&nbsp;&nbsp;
+                                <font color="#11CD86">一級警戒</font>
+                            </td>
+                            <td>&nbsp;：&nbsp;台灣台南高雄</td>
+                        </tr>
+                    </table>
+                    <br><br>
+                    <a href="#LV">查看各級警戒含義</a>
+                    <br><br>
+                    <p>&nbsp;近期馬來西亞、菲律賓 、緬甸 、越南、泰國、斯里蘭卡、寮國及柬埔寨登革熱疫情持續上升，
+                        <br>&nbsp;越南、泰國、斯里蘭卡及寮國病例數高於去年同期，
+                        <br>&nbsp;其中越南迄今累計病例數已逾5萬例；馬來西亞累計逾5萬例，疫情處於高點。
+                        <br>&nbsp;另緬甸今年已累計逾1萬例病例，多集中於中南部仰光省。
+                    </p>
+                    <br>
+                    <h3>&nbsp世界登革熱及雨量比較圖</h3>
+                    <p>&nbsp&nbsp此圖表顯示世界各地的登革熱情況，透過標示大雨地區來比對與登革熱分佈地區關連</p>
+                    <div id="wdengue" style="height: 650%;width:95%"></div>
+                    <br>
+                    <script type="text/javascript">
+                        var dom = document.getElementById("wdengue");
+                        var myChart = echarts.init(dom);
+                        var app = {};
+                        option = null;
+
+                        var latlong = {};
+                        latlong.Taiwan = { 'latitude': 23.5974162, 'longitude': 119.8960252 };
+                        latlong.Kuala = { 'latitude': 3.138675, 'longitude': 101.616949 };
+                        latlong.Maynila = { 'latitude': 14.5965788, 'longitude': 120.9445402 };
+                        latlong.Myanmar = { 'latitude': 18.8015918, 'longitude': 87.6358308 };
+                        latlong.Vietnam = { 'latitude': 15.7586948, 'longitude': 101.4137852 };
+                        latlong.Thailand = { 'latitude': 13.011043, 'longitude': 96.9930223 };
+                        latlong.SriLanka = { 'latitude': 7.8571798, 'longitude': 78.461646 };
+                        latlong.Laos = { 'latitude': 18.1643976, 'longitude': 99.3922046 };
+                        latlong.Cambodia = { 'latitude': 12.1417747, 'longitude': 102.7360758 };
+
+                        latlong.India = { 'latitude': 20.593684, 'longitude': 78.96288 };
+                        latlong.myanma = { 'latitude': 21.916221, 'longitude': 95.955974 };
+                        latlong.JiLin = { 'latitude': 43.152011, 'longitude': 126.437138 };
+                        latlong.Vietnam = { 'latitude': 14.058324, 'longitude': 108.277199 };
+                        latlong.Kyushu = { 'latitude': 32.645336, 'longitude': 130.958688 };
+                        latlong.Hunan = { 'latitude': 27.6253, 'longitude': 111.856859 };
+                        latlong.Niger = { 'latitude': 17.607789, 'longitude': 8.081666 };
+                        latlong.d1 = { 'latitude': 14.058324, 'longitude': 108.277199 };
+                        latlong.d2 = { 'latitude': 4.210484, 'longitude': 101.975766 };
+                        latlong.d3 = { 'latitude': 12.3373606, 'longitude': 76.098651 };
+                        latlong.d4 = { 'latitude': 19.0599836, 'longitude': 72.889999 };
+                        latlong.d5 = { 'latitude': 11.2587531, 'longitude': 75.78041 };
+                        latlong.d6 = { 'latitude': 30.7333148, 'longitude': 76.7794179 };
+                        latlong.d7 = { 'latitude': 18.9242095, 'longitude': -99.2215659 };
+                        latlong.d8 = { 'latitude': 29.0729673, 'longitude': -110.9559192 };
+                        latlong.d9 = { 'latitude': 20.9516658, 'longitude': 85.0985236 };
+                        latlong.d10 = { 'latitude': 20.462521, 'longitude': 85.8829895 };
+                        latlong.d11 = { 'latitude': 22.198745, 'longitude': 113.543873 };
+                        latlong.d12 = { 'latitude': 20.462521, 'longitude': 85.8829895 };
+                        latlong.d13 = { 'latitude': 21.0582737, 'longitude': 86.4958396 };
+                        latlong.d14 = { 'latitude': 20.9516658, 'longitude': 85.0985236 };
+                        latlong.d15 = { 'latitude': 10.6407389, 'longitude': 122.9689565 };
+                        latlong.d16 = { 'latitude': 22.572646, 'longitude': 88.363895 };
+                        latlong.d17 = { 'latitude': 21.7513844, 'longitude': -104.8454619 };
+                        latlong.d18 = { 'latitude': 36.778261, 'longitude': -119.4179324 };
+                        latlong.d19 = { 'latitude': 21.0277644, 'longitude': 105.8341598 };
+                        latlong.d20 = { 'latitude': -20.7722295, 'longitude': -54.7851531 };
+                        latlong.d21 = { 'latitude': 14.058324, 'longitude': 108.277199 };
+                        latlong.d22 = { 'latitude': 35.3939908, 'longitude': 109.1880047 };
+                        latlong.d23 = { 'latitude': 11.1271225, 'longitude': 78.6568942 };
+                        latlong.d24 = { 'latitude': 12.879721, 'longitude': 121.774017 };
+                        latlong.d25 = { 'latitude': 16.8050326, 'longitude': 96.1532466 };
+                        latlong.d26 = { 'latitude': 26.8466937, 'longitude': 80.946166 };
+                        latlong.d27 = { 'latitude': -34.5920848, 'longitude': -58.4249446 };
+                        latlong.d28 = { 'latitude': 22.1609509, 'longitude': 113.5511573 };
+                        latlong.d29 = { 'latitude': 43.635087, 'longitude': 1.39703 };
+                        latlong.d30 = { 'latitude': -2.5916025, 'longitude': 140.6689995 };
+                        latlong.d31 = { 'latitude': 9.9252007, 'longitude': 78.1197754 };
+                        latlong.d32 = { 'latitude': 11.9575509, 'longitude': 79.2902133 };
+                        latlong.d33 = { 'latitude': 14.058324, 'longitude': 108.277199 };
+                        latlong.d34 = { 'latitude': -8.1435933, 'longitude': -78.4751945 };
+                        latlong.d35 = { 'latitude': 9.748917, 'longitude': -83.753428 };
+                        latlong.d36 = { 'latitude': 10.0770702, 'longitude': -83.2907339 };
+                        latlong.d37 = { 'latitude': 10.4230878, 'longitude': -83.7199136 };
+                        latlong.d38 = { 'latitude': 10.2127003, 'longitude': -83.6866091 };
+                        latlong.d39 = { 'latitude': -5.1782884, 'longitude': -80.6548882 };
+                        latlong.d40 = { 'latitude': -15.7997654, 'longitude': -47.8644715 };
+                        latlong.d41 = { 'latitude': 28.4594965, 'longitude': 77.0266383 };
+                        latlong.d42 = { 'latitude': 8.6266068, 'longitude': -80.365865 };
+                        latlong.d43 = { 'latitude': 10.2569872, 'longitude': 123.8299639 };
+                        latlong.d44 = { 'latitude': 10.4367842, 'longitude': 123.9415518 };
+                        latlong.d45 = { 'latitude': 9.9325808, 'longitude': 123.5504076 };
+                        latlong.d46 = { 'latitude': 34.9526205, 'longitude': 72.331113 };
+                        latlong.d47 = { 'latitude': 22.6470514, 'longitude': 88.431683 };
+                        latlong.d48 = { 'latitude': 10.8505159, 'longitude': 76.2710833 };
+                        latlong.d49 = { 'latitude': 22.396428, 'longitude': 114.109497 };
+                        latlong.d50 = { 'latitude': 28.7040592, 'longitude': 77.1024902 };
+                        latlong.d51 = { 'latitude': 14.058324, 'longitude': 108.277199 };
+                        latlong.d52 = { 'latitude': 4.210484, 'longitude': 101.975766 };
+                        latlong.d53 = { 'latitude': 12.3373606, 'longitude': 76.098651 };
+                        latlong.d54 = { 'latitude': 19.0599836, 'longitude': 72.889999 };
+                        latlong.d55 = { 'latitude': 11.2587531, 'longitude': 75.78041 };
+                        latlong.d56 = { 'latitude': 30.7333148, 'longitude': 76.7794179 };
+                        latlong.d57 = { 'latitude': 18.9242095, 'longitude': -99.2215659 };
+                        latlong.d58 = { 'latitude': 29.0729673, 'longitude': -110.9559192 };
+                        latlong.d59 = { 'latitude': 20.9516658, 'longitude': 85.0985236 };
+                        latlong.d60 = { 'latitude': 20.462521, 'longitude': 85.8829895 };
+                        latlong.d61 = { 'latitude': 22.198745, 'longitude': 113.543873 };
+                        latlong.d62 = { 'latitude': 20.462521, 'longitude': 85.8829895 };
+                        latlong.d63 = { 'latitude': 21.0582737, 'longitude': 86.4958396 };
+                        latlong.d64 = { 'latitude': 20.9516658, 'longitude': 85.0985236 };
+                        latlong.d65 = { 'latitude': 10.6407389, 'longitude': 122.9689565 };
+                        latlong.d66 = { 'latitude': 22.572646, 'longitude': 88.363895 };
+                        latlong.d67 = { 'latitude': 21.7513844, 'longitude': -104.8454619 };
+                        latlong.d68 = { 'latitude': 36.778261, 'longitude': -119.4179324 };
+                        latlong.d69 = { 'latitude': 21.0277644, 'longitude': 105.8341598 };
+                        latlong.d70 = { 'latitude': -20.7722295, 'longitude': -54.7851531 };
+                        latlong.d71 = { 'latitude': 14.058324, 'longitude': 108.277199 };
+                        latlong.d72 = { 'latitude': 35.3939908, 'longitude': 109.1880047 };
+                        latlong.d73 = { 'latitude': 11.1271225, 'longitude': 78.6568942 };
+                        latlong.d74 = { 'latitude': 12.879721, 'longitude': 121.774017 };
+                        latlong.d75 = { 'latitude': 16.8050326, 'longitude': 96.1532466 };
+                        latlong.d76 = { 'latitude': 26.8466937, 'longitude': 80.946166 };
+                        latlong.d77 = { 'latitude': -34.5920848, 'longitude': -58.4249446 };
+                        latlong.d78 = { 'latitude': 22.1609509, 'longitude': 113.5511573 };
+                        latlong.d79 = { 'latitude': 43.635087, 'longitude': 1.39703 };
+                        latlong.d80 = { 'latitude': -2.5916025, 'longitude': 140.6689995 };
+                        latlong.d81 = { 'latitude': 9.9252007, 'longitude': 78.1197754 };
+                        latlong.d82 = { 'latitude': 11.9575509, 'longitude': 79.2902133 };
+                        latlong.d83 = { 'latitude': 14.058324, 'longitude': 108.277199 };
+                        latlong.d84 = { 'latitude': -8.1435933, 'longitude': -78.4751945 };
+                        latlong.d85 = { 'latitude': 9.748917, 'longitude': -83.753428 };
+                        latlong.d86 = { 'latitude': 10.0770702, 'longitude': -83.2907339 };
+                        latlong.d87 = { 'latitude': 10.4230878, 'longitude': -83.7199136 };
+                        latlong.d88 = { 'latitude': 10.2127003, 'longitude': -83.6866091 };
+                        latlong.d89 = { 'latitude': -5.1782884, 'longitude': -80.6548882 };
+                        latlong.d90 = { 'latitude': -15.7997654, 'longitude': -47.8644715 };
+                        latlong.d91 = { 'latitude': 28.4594965, 'longitude': 77.0266383 };
+                        latlong.d92 = { 'latitude': 8.6266068, 'longitude': -80.365865 };
+                        latlong.d93 = { 'latitude': 10.2569872, 'longitude': 123.8299639 };
+                        latlong.d94 = { 'latitude': 10.4367842, 'longitude': 123.9415518 };
+                        latlong.d95 = { 'latitude': 9.9325808, 'longitude': 123.5504076 };
+                        latlong.d96 = { 'latitude': 34.9526205, 'longitude': 72.331113 };
+                        latlong.d97 = { 'latitude': 22.6470514, 'longitude': 88.431683 };
+                        latlong.d98 = { 'latitude': 10.8505159, 'longitude': 76.2710833 };
+                        latlong.d99 = { 'latitude': 22.396428, 'longitude': 114.109497 };
+                        latlong.d100 = { 'latitude': 28.7040592, 'longitude': 77.1024902 };
+                        latlong.d101 = { 'latitude': -19.5351258, 'longitude': -54.0435563 };
+                        latlong.d102 = { 'latitude': -19.1097385, 'longitude': -51.736543 };
+                        latlong.d103 = { 'latitude': 14.058324, 'longitude': 108.277199 };
+                        latlong.d104 = { 'latitude': 11.1271225, 'longitude': 78.6568942 };
+                        latlong.d105 = { 'latitude': 12.879721, 'longitude': 121.774017 };
+                        latlong.d106 = { 'latitude': 21.0277644, 'longitude': 105.8341598 };
+                        latlong.d107 = { 'latitude': 26.8466937, 'longitude': 80.946166 };
+                        latlong.d108 = { 'latitude': 14.1025376, 'longitude': -87.1828716 };
+                        latlong.d109 = { 'latitude': 28.7040592, 'longitude': 77.1024902 };
+                        latlong.d110 = { 'latitude': 10.8505159, 'longitude': 76.2710833 };
+                        latlong.d111 = { 'latitude': 11.1271225, 'longitude': 78.6568942 };
+                        latlong.d112 = { 'latitude': 15.3172775, 'longitude': 75.7138884 };
+                        latlong.d113 = { 'latitude': 15.9128998, 'longitude': 79.7399875 };
+                        latlong.d114 = { 'latitude': 22.258652, 'longitude': 71.1923805 };
+                        latlong.d115 = { 'latitude': 19.7514798, 'longitude': 75.7138884 };
+                        latlong.d116 = { 'latitude': 22.9867569, 'longitude': 87.8549755 };
+                        latlong.d117 = { 'latitude': 28.7040592, 'longitude': 77.1024902 };
+                        latlong.d118 = { 'latitude': 43.635087, 'longitude': 1.39703 };
+                        latlong.d119 = { 'latitude': -2.5916025, 'longitude': 140.6689995 };
+                        latlong.d120 = { 'latitude': 9.9252007, 'longitude': 78.1197754 };
+                        latlong.d121 = { 'latitude': 11.9575509, 'longitude': 79.2902133 };
+                        latlong.d122 = { 'latitude': 14.058324, 'longitude': 108.277199 };
+                        latlong.d123 = { 'latitude': -8.1435933, 'longitude': -78.4751945 };
+                        latlong.d124 = { 'latitude': 9.748917, 'longitude': -83.753428 };
+                        latlong.d125 = { 'latitude': 10.0770702, 'longitude': -83.2907339 };
+                        latlong.d126 = { 'latitude': 10.4230878, 'longitude': -83.7199136 };
+                        latlong.d127 = { 'latitude': 10.2127003, 'longitude': -83.6866091 };
+                        latlong.d128 = { 'latitude': -5.1782884, 'longitude': -80.6548882 };
+                        latlong.d129 = { 'latitude': -15.7997654, 'longitude': -47.8644715 };
+                        latlong.d130 = { 'latitude': 28.4594965, 'longitude': 77.0266383 };
+                        latlong.d131 = { 'latitude': 8.6266068, 'longitude': -80.365865 };
+                        latlong.d132 = { 'latitude': 10.2569872, 'longitude': 123.8299639 };
+                        latlong.d133 = { 'latitude': 10.4367842, 'longitude': 123.9415518 };
+                        latlong.d134 = { 'latitude': 9.9325808, 'longitude': 123.5504076 };
+                        latlong.d135 = { 'latitude': 34.9526205, 'longitude': 72.331113 };
+                        latlong.d136 = { 'latitude': 10.8505159, 'longitude': 76.2710833 };
+                        latlong.d137 = { 'latitude': 22.6470514, 'longitude': 88.431683 };
+                        latlong.d138 = { 'latitude': 22.396428, 'longitude': 114.109497 };
+
+                        var mapData = [
+                            { 'code': 'Taiwan', 'name': 'Taiwan, 台灣', 'value': 12, 'color': '#F65676' },
+                            { 'code': 'Kuala', 'name': 'Kuala Lumpur, 馬來西亞', 'value': 12, 'color': '#F65676' },
+                            { 'code': 'Maynila', 'name': 'Maynila, 菲律賓', 'value': 12, 'color': '#F65676' },
+                            { 'code': 'Myanmar', 'name': 'Myanmar, 緬甸', 'value': 12, 'color': '#F65676' },
+                            { 'code': 'Vietnam', 'name': 'Vietnam, 越南', 'value': 12, 'color': '#F65676' },
+                            { 'code': 'Thailand', 'name': 'Thailand, 泰國', 'value': 12, 'color': '#F65676' },
+                            { 'code': 'SriLanka', 'name': 'SriLanka, 斯里蘭卡', 'value': 12, 'color': '#F65676' },
+                            { 'code': 'Laos', 'name': 'Laos, 寮國', 'value': 12, 'color': '#F65676' },
+                            { 'code': 'Cambodia', 'name': 'Cambodia, 柬埔寨', 'value': 12, 'color': '#F65676' },
+
+
+                            { 'code': 'India', 'name': 'India', 'value': 10, 'color': '#1F6ED4' },
+                            { 'code': 'myanma', 'name': 'myan-ma', 'value': 10, 'color': '#1F6ED4' },
+                            { 'code': 'JiLin', 'name': 'JiLin, China', 'value': 10, 'color': '#1F6ED4' },
+                            { 'code': 'Vietnam', 'name': 'Vietnam', 'value': 5, 'color': '#1F6ED4' },
+                            { 'code': 'Kyushu', 'name': 'Kyushu, Japan', 'value': 5, 'color': '#1F6ED4' },
+                            { 'code': 'Hunan', 'name': 'Hunan, China', 'value': 10, 'color': '#1F6ED4' },
+                            { 'code': 'Niger', 'name': 'Niger', 'value': 5, 'color': '#1F6ED4' },
+
+                            { 'code': 'd1', 'name': 'd1', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd2', 'name': 'd2', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd3', 'name': 'd3', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd4', 'name': 'd4', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd5', 'name': 'd5', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd6', 'name': 'd6', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd7', 'name': 'd7', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd8', 'name': 'd8', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd9', 'name': 'd9', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd10', 'name': 'd10', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd11', 'name': 'd11', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd12', 'name': 'd12', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd13', 'name': 'd13', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd14', 'name': 'd14', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd15', 'name': 'd15', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd16', 'name': 'd16', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd17', 'name': 'd17', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd18', 'name': 'd18', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd19', 'name': 'd19', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd20', 'name': 'd20', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd21', 'name': 'd21', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd22', 'name': 'd22', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd23', 'name': 'd23', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd24', 'name': 'd24', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd25', 'name': 'd25', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd26', 'name': 'd26', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd27', 'name': 'd27', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd28', 'name': 'd28', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd29', 'name': 'd29', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd30', 'name': 'd30', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd31', 'name': 'd31', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd32', 'name': 'd32', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd33', 'name': 'd33', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd34', 'name': 'd34', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd35', 'name': 'd35', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd36', 'name': 'd36', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd37', 'name': 'd37', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd38', 'name': 'd38', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd39', 'name': 'd39', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd40', 'name': 'd40', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd41', 'name': 'd41', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd42', 'name': 'd42', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd43', 'name': 'd43', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd44', 'name': 'd44', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd45', 'name': 'd45', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd46', 'name': 'd46', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd47', 'name': 'd47', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd48', 'name': 'd48', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd49', 'name': 'd49', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd50', 'name': 'd50', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd51', 'name': 'd51', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd52', 'name': 'd52', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd53', 'name': 'd53', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd54', 'name': 'd54', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd55', 'name': 'd55', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd56', 'name': 'd56', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd57', 'name': 'd57', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd58', 'name': 'd58', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd59', 'name': 'd59', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd60', 'name': 'd60', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd61', 'name': 'd51', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd62', 'name': 'd52', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd63', 'name': 'd53', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd64', 'name': 'd54', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd65', 'name': 'd55', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd66', 'name': 'd56', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd67', 'name': 'd57', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd68', 'name': 'd58', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd69', 'name': 'd59', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd70', 'name': 'd70', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd71', 'name': 'd51', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd72', 'name': 'd52', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd73', 'name': 'd53', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd74', 'name': 'd54', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd75', 'name': 'd55', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd76', 'name': 'd56', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd77', 'name': 'd57', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd78', 'name': 'd58', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd79', 'name': 'd59', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd80', 'name': 'd80', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd81', 'name': 'd51', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd82', 'name': 'd52', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd83', 'name': 'd53', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd84', 'name': 'd54', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd85', 'name': 'd55', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd86', 'name': 'd56', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd87', 'name': 'd57', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd88', 'name': 'd58', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd89', 'name': 'd59', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd90', 'name': 'd90', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd91', 'name': 'd51', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd92', 'name': 'd52', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd93', 'name': 'd53', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd94', 'name': 'd54', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd95', 'name': 'd55', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd96', 'name': 'd56', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd97', 'name': 'd57', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd98', 'name': 'd58', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd99', 'name': 'd59', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd100', 'name': 'd100', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd101', 'name': 'd51', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd102', 'name': 'd52', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd103', 'name': 'd53', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd104', 'name': 'd54', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd105', 'name': 'd55', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd106', 'name': 'd56', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd107', 'name': 'd57', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd108', 'name': 'd58', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd109', 'name': 'd59', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd110', 'name': 'd110', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd111', 'name': 'd51', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd112', 'name': 'd52', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd113', 'name': 'd53', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd114', 'name': 'd54', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd115', 'name': 'd55', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd116', 'name': 'd56', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd117', 'name': 'd57', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd118', 'name': 'd58', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd119', 'name': 'd59', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd120', 'name': 'd120', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd121', 'name': 'd51', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd122', 'name': 'd52', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd123', 'name': 'd53', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd124', 'name': 'd54', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd125', 'name': 'd55', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd126', 'name': 'd56', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd127', 'name': 'd57', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd128', 'name': 'd58', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd129', 'name': 'd59', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd130', 'name': 'd120', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd131', 'name': 'd51', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd132', 'name': 'd52', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd133', 'name': 'd53', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd134', 'name': 'd54', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd135', 'name': 'd55', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd136', 'name': 'd56', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd137', 'name': 'd57', 'value': 2, 'color': '#F65676' },
+                            { 'code': 'd138', 'name': 'd58', 'value': 2, 'color': '#F65676' },
+                        ];
+
+                        var max = -Infinity;
+                        var min = Infinity;
+                        mapData.forEach(function (itemOpt) {
+                            if (itemOpt.value > max) {
+                                max = itemOpt.value;
+                            }
+                            if (itemOpt.value < min) {
+                                min = itemOpt.value;
+                            }
+                        });
+
+                        option = {
+                            backgroundColor: '#D4EDF4',
+                            title: {
+                                text: 'Eavy rains and flooding (2017)',
+                                subtext: 'Asia',
+                                left: 'center',
+                                top: 'top',
+                                textStyle: {
+                                    color: '#111'
+                                }
+                            },
+                            tooltip: {
+                                trigger: 'item',
+
+                            },
+                            visualMap: {
+                                show: false,
+                                min: 0,
+                                max: max,
+                                inRange: {
+                                    symbolSize: [6, 60]
+                                }
+                            },
+                            geo: {
+                                name: 'Eavy rains and flooding (2017)',
+                                type: 'map',
+                                map: 'world',
+                                center: [105.307698, 18.056975],
+                                zoom: 6,
+                                roam: true,
+                                label: {
+                                    emphasis: {
+                                        show: false
+                                    }
+                                },
+                                itemStyle: {
+                                    normal: {
+                                        areaColor: '#E2F2D5',
+                                        borderColor: '#111'
+                                    },
+                                    emphasis: {
+                                        areaColor: '#E2F2D5'
+                                    }
+                                }
+                            },
+                            series: [
+                                {
+                                    type: 'scatter',
+                                    coordinateSystem: 'geo',
+                                    data: mapData.map(function (itemOpt) {
+                                        return {
+                                            name: itemOpt.name,
+                                            value: [
+                                                latlong[itemOpt.code].longitude,
+                                                latlong[itemOpt.code].latitude,
+                                                itemOpt.value
+                                            ],
+                                            label: {
+                                                emphasis: {
+                                                    position: 'right',
+                                                    show: true
+                                                }
+                                            },
+                                            itemStyle: {
+                                                normal: {
+                                                    color: itemOpt.color
+                                                }
+                                            }
+                                        };
+                                    })
+                                }
+                            ]
+                        };;
+                        if (option && typeof option === "object") {
+                            myChart.setOption(option, true);
+                        }
+                    </script>
+                    <br>
+                    <table>
+                        <tr>
+                            <th><a name="LV"></a> 分級標準
+                            </th>
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 意涵
+                            </th>
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 旅遊建議
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <font color="#11CD86">第一級：注意</font>
+                            </td>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 提醒注意
+                            </td>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 提醒遵守當地的一般預防措施
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <font color="#F7AD0A">第二級：警示</font>
+                            </td>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 加強預警
+                            </td>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 對當地採取加強防護
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <font color="#F65676">第三級：警告</font>
+                            </td>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 避免所有非必要旅遊
+                            </td>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 避免至當地所有非必要旅遊
+                            </td>
+                        </tr>
+                    </table>
+                    <br><br>
+                </div>
+                <div class="card">
+                    <div class="content" style="width:95%;">
+                        <table id="table" class="table table-list-search">
+                            <thead>
+                                <tr>
+                                    <th>地區</th>
+                                    <th>疾病</th>
+                                    <th>安全等級</th>
+                                    <th>建議</th>
+                                    <!--<th>有效時間</th>
+                            <th>到期時間</th>-->
+                                </tr>
+                            </thead>
+                            <tbody id="table_body">
+                            </tbody>
+                        </table>
+                        <ul class="pagination pagination-lg pager" id="myPager"></ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <!--<nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>-->
+                    <center>
+                        <p class="copyright">
+                            &copy; 2017 <a href="../index.html">Weather disease</a>, made with love in Taiwan
+                        </p>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+
+</body>
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="assets/js/light-bootstrap-dashboard.js"></script>
+
+<!-- 每藍資料顯示 -->
+<script>
+                        var table = document.getElementById("table_body");
+                        // 新聞資料
+                        var cases = [{
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "安哥拉-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "安哥拉",
+                            areaDesc_EN: "Angola",
+                            circle: "-12.38,17.49",
+                            ISO3166: "AO",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "安奎拉(英國海外領地)-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "安奎拉(英國海外領地)",
+                            areaDesc_EN: "Anguilla",
+                            circle: "18.2166,-63.05",
+                            ISO3166: "AI",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "安地卡及巴布達-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "安地卡及巴布達",
+                            areaDesc_EN: "Antigua and Barbuda",
+                            circle: "17.116667,-61.850000",
+                            ISO3166: "AG",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "阿根廷-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "阿根廷",
+                            areaDesc_EN: "Argentina",
+                            circle: "-35.17,-65.91",
+                            ISO3166: "AR",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "荷屬阿魯巴-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "荷屬阿魯巴",
+                            areaDesc_EN: "Aruba",
+                            circle: "12.5460798,-70",
+                            ISO3166: "AW",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "巴哈馬-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "巴哈馬",
+                            areaDesc_EN: "Bahamas",
+                            circle: "24.45,-77.96",
+                            ISO3166: "BS",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "巴貝多-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "巴貝多",
+                            areaDesc_EN: "Barbados",
+                            circle: "13.17,-59.56",
+                            ISO3166: "BB",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "貝里斯-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "貝里斯",
+                            areaDesc_EN: "Belize",
+                            circle: "16.77,-88.65",
+                            ISO3166: "BZ",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "玻利維亞-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "玻利維亞",
+                            areaDesc_EN: "Bolivia",
+                            circle: "-16.72,-64.64",
+                            ISO3166: "BO",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "荷屬波奈-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "荷屬波奈",
+                            areaDesc_EN: "Bonaire",
+                            circle: "12.161,-68.304",
+                            ISO3166: "",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "英屬維京群島-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "英屬維京群島",
+                            areaDesc_EN: "British Virgin Islands",
+                            circle: "18.3,-64.3",
+                            ISO3166: "VG",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "維德角-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "維德角",
+                            areaDesc_EN: "Cape Verde",
+                            circle: "15.09,-23.68",
+                            ISO3166: "CV",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "哥倫比亞-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "哥倫比亞",
+                            areaDesc_EN: "Colombia",
+                            circle: "3.42,-73.16",
+                            ISO3166: "CO",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "哥斯大黎加-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "哥斯大黎加",
+                            areaDesc_EN: "Costa Rica",
+                            circle: "10.44,-84.22",
+                            ISO3166: "CR",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "古巴-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "古巴",
+                            areaDesc_EN: "Cuba",
+                            circle: "21.65,-79.03",
+                            ISO3166: "CU",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "荷屬庫臘索島-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "荷屬庫臘索島",
+                            areaDesc_EN: "Curaçao",
+                            circle: "12.1521,-68.9776",
+                            ISO3166: "",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "多米尼克-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "多米尼克",
+                            areaDesc_EN: "Dominica (Commonwealth of)",
+                            circle: "15.43,-61.36",
+                            ISO3166: "DM",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "多明尼加-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "多明尼加",
+                            areaDesc_EN: "Dominican Rep.",
+                            circle: "18.89,-70.53",
+                            ISO3166: "DO",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "厄瓜多-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "厄瓜多",
+                            areaDesc_EN: "Ecuador",
+                            circle: "-1.439,-78.442",
+                            ISO3166: "EC",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "薩爾瓦多-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "薩爾瓦多",
+                            areaDesc_EN: "El Salvador",
+                            circle: "13.60,-89.12",
+                            ISO3166: "SV",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "法屬圭亞那-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "法屬圭亞那",
+                            areaDesc_EN: "French Guiana",
+                            circle: "3.951941,-53.02",
+                            ISO3166: "GF",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "格瑞那達-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "格瑞那達",
+                            areaDesc_EN: "Grenada",
+                            circle: "12.11,-61.69",
+                            ISO3166: "GD",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "瓜地馬拉-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "瓜地馬拉",
+                            areaDesc_EN: "Guatemala",
+                            circle: "15.72,-90.21",
+                            ISO3166: "GT",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "幾內亞比索-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "幾內亞比索",
+                            areaDesc_EN: "Guinea Bissau",
+                            circle: "12.05,-14.86",
+                            ISO3166: "GW",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "蓋亞那共和國-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "蓋亞那共和國",
+                            areaDesc_EN: "Guyana",
+                            circle: "4.82,-59.08",
+                            ISO3166: "GY",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "宏都拉斯-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "宏都拉斯",
+                            areaDesc_EN: "Honduras",
+                            circle: "14.92,-87.12",
+                            ISO3166: "HN",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "牙買加-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "牙買加",
+                            areaDesc_EN: "Jamaica",
+                            circle: "18.15,-77.32",
+                            ISO3166: "JM",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "馬爾地夫-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "馬爾地夫",
+                            areaDesc_EN: "Maldives",
+                            circle: "-0.65,72.64",
+                            ISO3166: "MV",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "馬紹爾群島共和國-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "馬紹爾群島共和國",
+                            areaDesc_EN: "Marshall Islands",
+                            circle: "7.44,168.53",
+                            ISO3166: "MH",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "墨西哥-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "墨西哥",
+                            areaDesc_EN: "Mexico",
+                            circle: "24.04,-103.35",
+                            ISO3166: "MX",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "蒙哲臘(英國海外領地)-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "蒙哲臘(英國海外領地)",
+                            areaDesc_EN: "Montserrat",
+                            circle: "16.745581,-62.187699",
+                            ISO3166: "MS",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "尼加拉瓜-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "尼加拉瓜",
+                            areaDesc_EN: "Nicaragua",
+                            circle: "12.94,-85.01",
+                            ISO3166: "NI",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "帛琉-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "帛琉",
+                            areaDesc_EN: "Palau",
+                            circle: "7.52,134.60",
+                            ISO3166: "PW",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "巴拿馬共和國-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "巴拿馬共和國",
+                            areaDesc_EN: "Panama",
+                            circle: "8.88,-79.34",
+                            ISO3166: "PA",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "巴拉圭-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "巴拉圭",
+                            areaDesc_EN: "Paraguay",
+                            circle: "-23.24,-58.60",
+                            ISO3166: "PY",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "秘魯-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "秘魯",
+                            areaDesc_EN: "Peru",
+                            circle: "-8.75,-74.61",
+                            ISO3166: "PE",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "美屬波多黎各-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "美屬波多黎各",
+                            areaDesc_EN: "Puerto Rico",
+                            circle: "18.213698,-66.456299",
+                            ISO3166: "PR",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "斐濟-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "斐濟",
+                            areaDesc_EN: "Republic of Fiji",
+                            circle: "-17.79,177.89",
+                            ISO3166: "FJ",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "荷屬沙巴(與荷屬波奈為同行政區)-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "荷屬沙巴(與荷屬波奈為同行政區)",
+                            areaDesc_EN: "Saba",
+                            circle: "17.632,-63.254",
+                            ISO3166: "",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "聖克里斯多福及尼維斯-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "聖克里斯多福及尼維斯",
+                            areaDesc_EN: "Saint Christopher (St. Kitts) and Nevis",
+                            circle: "17.30,-62.71",
+                            ISO3166: "KN",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "聖露西亞-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "聖露西亞",
+                            areaDesc_EN: "Saint Lucia",
+                            circle: "13.90,-60.98",
+                            ISO3166: "LC",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "法屬聖馬丁-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "法屬聖馬丁",
+                            areaDesc_EN: "Saint Martin",
+                            circle: "18.078,-63.055",
+                            ISO3166: "GP",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "聖文森及格瑞那丁-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "聖文森及格瑞那丁",
+                            areaDesc_EN: "Saint Vincent and the Grenadines",
+                            circle: "13.25,-61.19",
+                            ISO3166: "VC",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "薩摩亞-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "薩摩亞",
+                            areaDesc_EN: "Samoa",
+                            circle: "-13.67,-172.43",
+                            ISO3166: "WS",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "新加坡-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "新加坡",
+                            areaDesc_EN: "Singapore",
+                            circle: "1.27,103.89",
+                            ISO3166: "SG",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "荷屬聖佑達修斯(與荷屬波奈為同行政區)-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "荷屬聖佑達修斯(與荷屬波奈為同行政區)",
+                            areaDesc_EN: "Sint Eustatius",
+                            circle: "17.495,-62.992",
+                            ISO3166: "",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "索羅門群島-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "索羅門群島",
+                            areaDesc_EN: "Solomon Islands",
+                            circle: "-9.66,160.31",
+                            ISO3166: "SB",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "聖馬丁-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "聖馬丁",
+                            areaDesc_EN: "St.Maarten",
+                            circle: "18.061007,-63.06839",
+                            ISO3166: "",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "蘇利南-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "蘇利南",
+                            areaDesc_EN: "Suriname",
+                            circle: "4.14,-55.96",
+                            ISO3166: "SR",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "密克羅尼西亞聯邦-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "密克羅尼西亞聯邦",
+                            areaDesc_EN: "The Federated States of Micronesia(FSM)",
+                            circle: "6.66,157.98",
+                            ISO3166: "FM",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "東加王國-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "東加王國",
+                            areaDesc_EN: "Tonga",
+                            circle: "-21.16,-175.29",
+                            ISO3166: "TO",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "千里達及托巴哥-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "千里達及托巴哥",
+                            areaDesc_EN: "Trinidad and Tobago",
+                            circle: "10.42,-61.28",
+                            ISO3166: "TT",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "英屬土克凱可群島-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "英屬土克凱可群島",
+                            areaDesc_EN: "Turks and Caicos",
+                            circle: "21.7964,-71.8121",
+                            ISO3166: "TC",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "美屬維京群島-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "美屬維京群島",
+                            areaDesc_EN: "US Virgin Islands",
+                            circle: "17.74,-64.76",
+                            ISO3166: "VI",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "委內瑞拉-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "委內瑞拉",
+                            areaDesc_EN: "Venezuela",
+                            circle: "7.10,-64.95",
+                            ISO3166: "VE",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "越南-茲卡病毒感染症(第二級:警示 )",
+                            description: "",
+                            instruction: "對當地採取加強防護",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "越南",
+                            areaDesc_EN: "Vietnam",
+                            circle: "14.68,108.10",
+                            ISO3166: "VN",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "孟加拉-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "孟加拉",
+                            areaDesc_EN: "Bangladesh",
+                            circle: "24.14,90.24",
+                            ISO3166: "BD",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "巴西-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "巴西",
+                            areaDesc_EN: "Brazil",
+                            circle: "-15.75,-47.95",
+                            ISO3166: "BR",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "布吉納法索-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "布吉納法索",
+                            areaDesc_EN: "Burkina Faso",
+                            circle: "12.40,-1.75",
+                            ISO3166: "BF",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "蒲隆地-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "蒲隆地",
+                            areaDesc_EN: "Burundi",
+                            circle: "-3.30,29.89",
+                            ISO3166: "BI",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "柬埔寨-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "柬埔寨",
+                            areaDesc_EN: "Cambodia",
+                            circle: "12.74,105.07",
+                            ISO3166: "KH",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "中非共和國-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "中非共和國",
+                            areaDesc_EN: "Central African Republic",
+                            circle: "6.66,20.41",
+                            ISO3166: "CF",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "象牙海岸-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "象牙海岸",
+                            areaDesc_EN: "Cote d\u0027Ivoire",
+                            circle: "7.61,-5.32",
+                            ISO3166: "CI",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "加彭-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "加彭",
+                            areaDesc_EN: "Gabon",
+                            circle: "-0.57,11.79",
+                            ISO3166: "GA",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "海地-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "海地",
+                            areaDesc_EN: "Haiti",
+                            circle: "18.95,-72.70",
+                            ISO3166: "HT",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "印度-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "印度",
+                            areaDesc_EN: "India",
+                            circle: "22.99,79.80",
+                            ISO3166: "IN",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "印尼-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "印尼",
+                            areaDesc_EN: "Indonesia",
+                            circle: "-4.39,122.95",
+                            ISO3166: "ID",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "寮國-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "寮國",
+                            areaDesc_EN: "Lao People\u0027s Dem Rep",
+                            circle: "19.55,102.52",
+                            ISO3166: "LA",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "馬來西亞-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "馬來西亞",
+                            areaDesc_EN: "Malaysia",
+                            circle: "3.71,102.06",
+                            ISO3166: "MY",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "奈及利亞-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "奈及利亞",
+                            areaDesc_EN: "Nigeria",
+                            circle: "9.49,7.91",
+                            ISO3166: "NG",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "巴布亞紐幾內亞-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "巴布亞紐幾內亞",
+                            areaDesc_EN: "Papua New Guinea",
+                            circle: "-6.75,144.66",
+                            ISO3166: "PG",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "菲律賓-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "菲律賓",
+                            areaDesc_EN: "Philippines",
+                            circle: "12.42,122.82",
+                            ISO3166: "PH",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "喀麥隆-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "喀麥隆",
+                            areaDesc_EN: "Republic of Cameroon",
+                            circle: "5.79,12.52",
+                            ISO3166: "CM",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "塞內加爾-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "塞內加爾",
+                            areaDesc_EN: "Senegal",
+                            circle: "14.36,-14.44",
+                            ISO3166: "SN",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "泰國-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "泰國",
+                            areaDesc_EN: "Thailand",
+                            circle: "15.02,101.51",
+                            ISO3166: "TH",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-07-29T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-07-29T00:00:00+08:00",
+                            expires: "2017-10-29T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "烏干達-茲卡病毒感染症(第一級:注意 )",
+                            description: "孟加拉,巴西,布吉納法索,蒲隆地,柬埔寨,中非共和國,象牙海岸,加彭,海地,印度,印尼,寮國,馬來西亞,奈及利亞,巴布亞紐幾內亞,菲律賓,喀麥隆,塞內加爾,泰國,烏干達-茲卡病毒感染症(第一級:注意 )",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "茲卡病毒感染症",
+                            areaDesc: "烏干達",
+                            areaDesc_EN: "Uganda",
+                            circle: "1.51,32.16",
+                            ISO3166: "UG",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-08-15T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-08-15T00:00:00+08:00",
+                            expires: "2017-11-15T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "索馬利亞-霍亂(第一級:注意 )",
+                            description: "索馬利亞,葉門-霍亂(第一級:注意 )-",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "霍亂",
+                            areaDesc: "索馬利亞",
+                            areaDesc_EN: "Somalia",
+                            circle: "2.94,45.21",
+                            ISO3166: "SO",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            sent: "2017-08-15T00:00:00+08:00",
+                            Source: "CDC",
+                            effective: "2017-08-15T00:00:00+08:00",
+                            expires: "2017-11-15T00:00:00+08:00",
+                            senderName: "疾病管制署",
+                            headline: "葉門-霍亂(第一級:注意 )",
+                            description: "索馬利亞,葉門-霍亂(第一級:注意 )-",
+                            instruction: "提醒遵守當地的一般預防措施",
+                            web: "http://www.cdc.gov.tw/countryepidlevel.aspx?treeid=AA2D4B06C27690E6\u0026nowtreeid=4DD5EDD98F8580AA",
+                            alert_title: "國際間旅遊疫情建議",
+                            severity_level: "第一級:注意 ",
+                            alert_disease: "霍亂",
+                            areaDesc: "葉門",
+                            areaDesc_EN: "Yemen",
+                            circle: "15.94,47.52",
+                            ISO3166: "YE",
+                            areaDetail: null,
+                            ISO3166_2: null
+                        },
+                        {
+                            instruction: "避免至當地所有非必要旅遊",
+                            severity_level: "第三級: 警告 ",
+                            alert_disease: "登革熱",
+                            alert_disease_EN: "Dengue fever",
+                            areaDesc: "斯里蘭卡",
+                            areaDesc_EN: "Sri Lanka",
+                        },
+                        {
+                            instruction: "避免至當地所有非必要旅遊",
+                            severity_level: "第三級: 警告 ",
+                            alert_disease: "登革熱",
+                            alert_disease_EN: "Dengue fever",
+                            areaDesc: "富士",
+                            areaDesc_EN: "Fiji",
+                        },
+                        {
+                            instruction: "對當地採取加強防護",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "登革熱",
+                            alert_disease_EN: "Dengue fever",
+                            areaDesc: "泰國",
+                            areaDesc_EN: "Thailand",
+                        },
+                        {
+                            instruction: "對當地採取加強防護",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "登革熱",
+                            alert_disease_EN: "Dengue fever",
+                            areaDesc: "緬甸",
+                            areaDesc_EN: "Myanmar",
+                        },
+                        {
+                            instruction: "對當地採取加強防護",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "登革熱",
+                            alert_disease_EN: "Dengue fever",
+                            areaDesc: "越南",
+                            areaDesc_EN: "Vietnam",
+                        },
+                        {
+                            instruction: "對當地採取加強防護",
+                            severity_level: "第二級:警示 ",
+                            alert_disease: "登革熱",
+                            alert_disease_EN: "Dengue fever",
+                            areaDesc: "台灣",
+                            areaDesc_EN: "Taiwan",
+                        }
+                        ];
+                        console.log(cases.length);
+                        for (var i = 0; i < cases.length; i++) {
+                            var tr = document.createElement('tr');
+
+                            var td_ad = document.createElement('td');
+                            td_ad.innerHTML = cases[i].areaDesc;
+
+                            var td_a_d = document.createElement('td');
+                            td_a_d.innerHTML = cases[i].alert_disease;
+
+                            var td_s_l = document.createElement('td');
+                            td_s_l.innerHTML = cases[i].severity_level;
+
+                            var td_i = document.createElement('td');
+                            td_i.innerHTML = cases[i].instruction;
+                            /*
+                                                        var td_e = document.createElement('td');
+                                                        td_e.innerHTML = cases[i].effective;
+                            
+                                                        var td_ex = document.createElement('td');
+                                                        td_ex.innerHTML = cases[i].expires;
+                            */
+
+                            tr.appendChild(td_ad);
+                            tr.appendChild(td_a_d);
+                            tr.appendChild(td_s_l);
+                            tr.appendChild(td_i);
+                            //tr.appendChild(td_e);
+                            //tr.appendChild(td_ex);
+                            table.appendChild(tr)
+                        }
+
+</script>
+<!-- 新聞json檔 -->
+<!-- 表格套件js -->
+<script>
+                        $(document).ready(function () {
+                            $('#table').DataTable();
+                        });
+
+</script>
+
+</html>
