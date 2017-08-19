@@ -25,7 +25,7 @@ One by one to OpenData visualization of the way to allow users to know which sev
 # App (Dengue helper)
 <img src="App/Screenshot/demo.gif" width="300">
 
-[<img src="App/Screenshot/QRCode.png" width="200">]("Web/DengueHelper.apk")
+[<img src="App/Screenshot/QRCode.png" width="200">](Web/DengueHelper.apk)
 
 
 In our application we use open data provited by the government and you can use it from anywhere.
@@ -137,10 +137,10 @@ and also a high temptrue and humidity area
 
 ## DownLoad
 
-[<img src="Screenshot/ppt.png" width="150">]("WeatherDisease-上台簡報.pptx")
+[<img src="Screenshot/ppt.png" width="150">](WeatherDisease-上台簡報.pptx)
 
 DownLoad PPT
 
-[<img src="App/Screenshot/QRCode.png" width="200">]("Web/DengueHelper.apk")
+[<img src="App/Screenshot/QRCode.png" width="200">](Web/DengueHelper.apk)
 
 DownLoad Dengue helper
