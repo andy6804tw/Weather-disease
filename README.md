@@ -30,6 +30,7 @@ One by one to OpenData visualization of the way to allow users to know which sev
 
 In our application we use open data provited by the government and you can use it from anywhere.
 
+<<<<<<< HEAD
 ## Feature:
 > * ####  Global real-time weather : 
 >   Temperature, Wind speed and direction, Atmospheric and Air pressure, Astronomy, Weather forecast.
@@ -42,6 +43,21 @@ In our application we use open data provited by the government and you can use i
 > * #### Dengue fever prevention : 
 >   Dengue knowledge and simple check whether you live in danger.
 
+=======
+## Introduce:</br>
+````
+* ####  Global real-time weather : 
+Temperature、Wind speed and direction、Atmospheric and Air pressure、Astronomy、Weather forecast.</br>
+* ####  Real-time disease news : 
+Including Taiwan dengue fever news and World Health Organization(WHO) disease news,and you can check world disease disaster news before you travel abroad.</br>
+* ####  Global map : 
+Global temperature map、Global dengue map、Global humidity map.</br>
+* ####  Taiwan dengue map : 
+The number of Taiwan dengue fever ,and region occur in anywhere.</br>
+* #### Dengue fever prevention : 
+Dengue knowledge and simple check whether you live in danger.
+````
+>>>>>>> 23b00102a73dd76a12553b79368e3baf224c6e7e
 
 
 # Weather Disease Web
